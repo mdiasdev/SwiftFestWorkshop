@@ -17,6 +17,24 @@ server.serverPort = 8080
 var routes = Routes()
 
 func getRestaurants(request: HTTPRequest, response: HTTPResponse) {
+    do {
+        let objectQuery = Restaurant()
+        try objectQuery.findAll()
+        var responseJson: [[String: Any]] = []
+
+        for row in objectQuery.rows() {
+            responseJson.append(row.asDictionary())
+        }
+
+        try response.setBody(json: responseJson)
+                    .completed(status: .ok)
+    } catch let error as StORMError {
+        response.setBody(string: error.string())
+                .completed(status: .internalServerError)
+    } catch let error {
+        response.setBody(string: "\(error)")
+                .completed(status: .internalServerError)
+    }
 }
 
 func createRestaurants(request: HTTPRequest, response: HTTPResponse) {
