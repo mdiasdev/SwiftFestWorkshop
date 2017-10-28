@@ -14,6 +14,9 @@ PostgresConnector.port = 5432
 let restaurant = Restaurant()
 try? restaurant.setup()
 
+let reservation = Reservation()
+try? reservation.setup()
+
 let server = HTTPServer()
 server.serverPort = 8080
 
@@ -51,17 +54,17 @@ func getRestaurants(request: HTTPRequest, response: HTTPResponse) {
 ///
 /// - Parameters:
 ///   - request: HTTP Request made by the consumer
-///   - response: HTTP Response made of the Restaurants in the Database
+///   - response: The created Restaurant
 func createRestaurants(request: HTTPRequest, response: HTTPResponse) {
     do {
-        guard let json = try request.postParams[0].0.jsonDecode() as? [String: Any],
+        guard let json = try request.postBodyString?.jsonDecode() as? [String: Any],
               let name = json["name"] as? String,
               let phoneNumber = json["phoneNumber"] as? String,
-              let latitude = json["latitude"] as? Float,
-              let longitude = json["longitude"] as? Float,
+              let latitude = json["latitude"] as? Double,
+              let longitude = json["longitude"] as? Double,
               let website = json["website"] as? String else {
 
-            response.setBody(string: "Missing Parameter")
+            response.setBody(string: "Missing or Bad Parameter")
                     .completed(status: .badRequest)
             return
         }
@@ -69,21 +72,28 @@ func createRestaurants(request: HTTPRequest, response: HTTPResponse) {
         let restaurant = Restaurant()
         restaurant.name = name
         restaurant.phoneNumber = phoneNumber
-        restaurant.latitude = latitude
-        restaurant.longitude = longitude
+        restaurant.latitude = Float(latitude)
+        restaurant.longitude = Float(longitude)
         restaurant.website = website
 
         try restaurant.save { id in
             restaurant.id = id as! Int
         }
 
-        response.completed(status: .created)
+        try response.setBody(json: restaurant.asDictionary())
+                    .completed(status: .created)
 
     } catch let error {
         print(error)
     }
 }
 
+
+/// Delete a given Restaurant from the database
+///
+/// - Parameters:
+///   - request: HTTP Request made by the consumer
+///   - response: HTTP Response success or failure
 func deleteRestaurant(request: HTTPRequest, response: HTTPResponse) {
     guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
         response.completed(status: .badRequest)
@@ -108,10 +118,73 @@ func deleteRestaurant(request: HTTPRequest, response: HTTPResponse) {
     response.completed(status: .accepted)
 }
 
+
+/// Creates a Restaurant in the Database
+///
+/// - Parameters:
+///   - request: HTTP Request made by the consumer
+///   - response: The created Reservation
 func createReservation(request: HTTPRequest, response: HTTPResponse) {
+    do {
+        guard let json = try request.postBodyString?.jsonDecode() as? [String: Any],
+              let restaurantId = json["restaurantId"] as? Int,
+              let date = json["date"] as? String,
+              let partySize = json["partySize"] as? Int else {
+
+                response.setBody(string: "Missing or Bad Parameter")
+                        .completed(status: .badRequest)
+                return
+        }
+
+        let restaurant = Restaurant()
+        try restaurant.get(restaurantId)
+
+        guard restaurant.id != 0 else {
+            response.setBody(string: "Restaurant Not Found").completed(status: .notFound)
+            return
+        }
+
+        let reservation = Reservation()
+        reservation.restaurantId = restaurant.id
+        reservation.date = date
+        reservation.partySize = partySize
+
+        try reservation.save { id in
+            reservation.id = id as! Int
+        }
+
+        try response.setBody(json: reservation.asDictionary())
+                    .completed(status: .ok)
+
+    } catch let error {
+        print(error)
+    }
 }
 
-func getReservations(request: HTTPRequest, response: HTTPResponse) {
+func getReservation(request: HTTPRequest, response: HTTPResponse) {
+    guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
+        response.completed(status: .badRequest)
+        return
+    }
+
+    let reservation = Reservation()
+
+    do {
+        try reservation.get(id)
+
+        if reservation.id != 0 {
+            try response.setBody(json: reservation.asDictionary())
+                        .completed(status: .ok)
+        } else {
+            response.setBody(string: "Reservation Not Found")
+                    .completed(status: .notFound)
+            return
+        }
+    } catch let error {
+        print(error)
+    }
+
+    response.completed(status: .internalServerError)
 }
 
 
@@ -120,7 +193,7 @@ routes.add(method: .post, uri: "/restaurants", handler: createRestaurants)
 routes.add(method: .delete, uri: "/restaurants/{id}", handler: deleteRestaurant)
 
 routes.add(method: .post, uri: "/reservation", handler: createReservation)
-routes.add(method: .get, uri: "/reservation/{id}", handler: getReservations)
+routes.add(method: .get, uri: "/reservation/{id}", handler: getReservation)
 
 server.addRoutes(routes)
 
