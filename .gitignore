@@ -67,4 +67,4 @@ fastlane/test_output
 # Perfect
 /.build
 /Packages
-/*.xcodeproj
+Server/*.xcodeproj
