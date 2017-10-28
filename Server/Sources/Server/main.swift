@@ -84,6 +84,30 @@ func createRestaurants(request: HTTPRequest, response: HTTPResponse) {
     }
 }
 
+func deleteRestaurant(request: HTTPRequest, response: HTTPResponse) {
+    guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
+        response.completed(status: .badRequest)
+        return
+    }
+
+    let restaurant = Restaurant()
+
+    do {
+        try restaurant.get(id)
+
+        if restaurant.id != 0 {
+            try restaurant.delete()
+        } else {
+            response.setBody(string: "Restaurant Not Found").completed(status: .notFound)
+            return
+        }
+    } catch let error {
+        print(error)
+    }
+
+    response.completed(status: .accepted)
+}
+
 func createReservation(request: HTTPRequest, response: HTTPResponse) {
 }
 
@@ -93,8 +117,10 @@ func getReservations(request: HTTPRequest, response: HTTPResponse) {
 
 routes.add(method: .get, uri: "/restaurants", handler: getRestaurants)
 routes.add(method: .post, uri: "/restaurants", handler: createRestaurants)
+routes.add(method: .delete, uri: "/restaurants/{id}", handler: deleteRestaurant)
+
 routes.add(method: .post, uri: "/reservation", handler: createReservation)
-routes.add(method: .get, uri: "/reservation", handler: getReservations)
+routes.add(method: .get, uri: "/reservation/{id}", handler: getReservations)
 
 server.addRoutes(routes)
 
