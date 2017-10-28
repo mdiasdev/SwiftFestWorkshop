@@ -161,6 +161,12 @@ func createReservation(request: HTTPRequest, response: HTTPResponse) {
     }
 }
 
+
+/// Get a single Reservation by ID
+///
+/// - Parameters:
+///   - request: HTTP Request made by the consumer
+///   - response: The Reservation
 func getReservation(request: HTTPRequest, response: HTTPResponse) {
     guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
         response.completed(status: .badRequest)
@@ -188,12 +194,71 @@ func getReservation(request: HTTPRequest, response: HTTPResponse) {
 }
 
 
+/// Get all Reservations
+///
+/// - Parameters:
+///   - request: HTTP Request made by the consumer
+///   - response: The Reservations
+func getReservations(request: HTTPRequest, response: HTTPResponse) {
+    do {
+        let objectQuery = Reservation()
+        try objectQuery.findAll()
+        var responseJson: [[String: Any]] = []
+
+        for row in objectQuery.rows() {
+            responseJson.append(row.asDictionary())
+        }
+
+        try response.setBody(json: responseJson)
+            .completed(status: .ok)
+    } catch let error as StORMError {
+        response.setBody(string: error.string())
+            .completed(status: .internalServerError)
+    } catch let error {
+        response.setBody(string: "\(error)")
+            .completed(status: .internalServerError)
+    }
+}
+
+
+/// Delete a given Reservation from the database
+///
+/// - Parameters:
+///   - request: HTTP Request made by the consumer
+///   - response: HTTP Response success or failure
+func deleteReservation(request: HTTPRequest, response: HTTPResponse) {
+    guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
+        response.completed(status: .badRequest)
+        return
+    }
+
+    let reservation = Reservation()
+
+    do {
+        try reservation.get(id)
+
+        if reservation.id != 0 {
+            try reservation.delete()
+        } else {
+            response.setBody(string: "Reservation Not Found").completed(status: .notFound)
+            return
+        }
+    } catch let error {
+        print(error)
+    }
+
+    response.completed(status: .accepted)
+}
+
+
 routes.add(method: .get, uri: "/restaurants", handler: getRestaurants)
 routes.add(method: .post, uri: "/restaurants", handler: createRestaurants)
 routes.add(method: .delete, uri: "/restaurants/{id}", handler: deleteRestaurant)
 
 routes.add(method: .post, uri: "/reservation", handler: createReservation)
 routes.add(method: .get, uri: "/reservation/{id}", handler: getReservation)
+routes.add(method: .get, uri: "/reservation", handler: getReservations)
+routes.add(method: .delete, uri: "/reservation/{id}", handler: deleteReservation)
 
 server.addRoutes(routes)
 
