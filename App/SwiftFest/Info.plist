@@ -46,5 +46,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>&quot;Just give me your location&quot;</string>
 </dict>
 </plist>

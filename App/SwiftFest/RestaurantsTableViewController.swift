@@ -63,14 +63,15 @@ class RestaurantsTableViewController: UITableViewController {
         task.resume()
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let detailVC = segue.destination as? RestaurantDetailViewController,
+           let row = tableView.indexPathForSelectedRow?.row,
+           let restaurant = restaurants?[row] {
+            detailVC.restaurant = restaurant
+        }
     }
-    */
 
 }
