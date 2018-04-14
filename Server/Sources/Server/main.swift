@@ -50,38 +50,45 @@ func getRestaurants(request: HTTPRequest, response: HTTPResponse) {
 }
 
 
-/// Creates a Reservation object in the database if all parameters are present
+/// Creates one or many Restaurant objects in the database if all parameters are present
 ///
 /// - Parameters:
 ///   - request: HTTP Request made by the consumer
 ///   - response: The created Restaurant
 func createRestaurants(request: HTTPRequest, response: HTTPResponse) {
     do {
-        guard let json = try request.postBodyString?.jsonDecode() as? [String: Any],
-              let name = json["name"] as? String,
-              let phoneNumber = json["phoneNumber"] as? String,
-              let latitude = json["latitude"] as? Double,
-              let longitude = json["longitude"] as? Double,
-              let website = json["website"] as? String else {
+        guard let requestJson = try request.postBodyString?.jsonDecode() as? [[String: Any]] else {
 
             response.setBody(string: "Missing or Bad Parameter")
                     .completed(status: .badRequest)
             return
         }
 
-        let restaurant = Restaurant()
-        restaurant.name = name
-        restaurant.phoneNumber = phoneNumber
-        restaurant.latitude = Float(latitude)
-        restaurant.longitude = Float(longitude)
-        restaurant.website = website
+        for json in requestJson {
+            guard let name = json["name"] as? String,
+                let phoneNumber = json["phoneNumber"] as? String,
+                let latitude = json["latitude"] as? Double,
+                let longitude = json["longitude"] as? Double,
+                let website = json["website"] as? String else {
 
-        try restaurant.save { id in
-            restaurant.id = id as! Int
+                    response.setBody(string: "Missing or Bad Parameter")
+                            .completed(status: .badRequest)
+                    return
+            }
+
+            let restaurant = Restaurant()
+            restaurant.name = name
+            restaurant.phoneNumber = phoneNumber
+            restaurant.latitude = Float(latitude)
+            restaurant.longitude = Float(longitude)
+            restaurant.website = website
+
+            try restaurant.save { id in
+                restaurant.id = id as! Int
+            }
         }
 
-        try response.setBody(json: restaurant.asDictionary())
-                    .completed(status: .created)
+        response.completed(status: .created)
 
     } catch let error {
         print(error)
