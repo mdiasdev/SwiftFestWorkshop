@@ -59,6 +59,14 @@ class RestaurantDetailViewController: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        if let controller = segue.destination as? CreateReservationViewController {
+            controller.restaurantId = restaurant?.id ?? -1
+        }
+    }
+
     private func getAdressName(location: CLLocation) {
 
         CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
@@ -77,17 +85,6 @@ class RestaurantDetailViewController: UIViewController {
             }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

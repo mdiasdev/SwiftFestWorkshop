@@ -48,7 +48,8 @@ class RestaurantsTableViewController: UITableViewController {
         var request = URLRequest(url: URL(string: "http://localhost:8080/restaurants")!)
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let responseJson = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String: Any]] else { return }
+            guard let data = data,
+                  let responseJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: Any]] else { return }
 
             var restaurants: [Restaurant] = []
             for json in responseJson! {

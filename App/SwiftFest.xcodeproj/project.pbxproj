@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D92849B2083DB84000B5C7B /* CreateReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */; };
 		6DB8CB4B1FA52A3F0038365A /* RestaurantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */; };
 		6DB8CB4E1FA533450038365A /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8CB4D1FA533450038365A /* Restaurant.swift */; };
 		6DB8CB501FA812800038365A /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8CB4F1FA812800038365A /* RestaurantDetailViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReservationViewController.swift; sourceTree = "<group>"; };
 		6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsTableViewController.swift; sourceTree = "<group>"; };
 		6DB8CB4D1FA533450038365A /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		6DB8CB4F1FA812800038365A /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		6DEA782D1F895CAA00345B38 /* SwiftFest */ = {
 			isa = PBXGroup;
 			children = (
+				6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */,
 				6DB8CB4F1FA812800038365A /* RestaurantDetailViewController.swift */,
 				6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */,
 				6DB8CB4C1FA532BC0038365A /* Models */,
@@ -276,6 +279,7 @@
 				6DB8CB4B1FA52A3F0038365A /* RestaurantsTableViewController.swift in Sources */,
 				6DEA782F1F895CAA00345B38 /* AppDelegate.swift in Sources */,
 				6DB8CB501FA812800038365A /* RestaurantDetailViewController.swift in Sources */,
+				6D92849B2083DB84000B5C7B /* CreateReservationViewController.swift in Sources */,
 				6DB8CB4E1FA533450038365A /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
