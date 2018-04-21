@@ -27,3 +27,8 @@ localSearch.start { (response, error) in
     }
 }
 
+/*** trying to figure out how to only serve up most recent reservation **/
+
+var lies = "04/21/2018, 16:53" > "04/22/2018, 16:53"
+var truth = "04/21/2018, 16:53" < "04/22/2018, 16:53"
+
