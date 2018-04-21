@@ -71,6 +71,7 @@ class RestaurantsTableViewController: UITableViewController {
         if let detailVC = segue.destination as? RestaurantDetailViewController,
            let row = tableView.indexPathForSelectedRow?.row,
            let restaurant = restaurants?[row] {
+
             detailVC.restaurant = restaurant
         }
     }

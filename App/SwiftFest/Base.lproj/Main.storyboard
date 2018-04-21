@@ -267,7 +267,15 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="XpD-bI-oh9"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Reserve"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="tappedReserve:" destination="DMV-sM-yFH" eventType="touchUpInside" id="Nv4-JZ-0XG"/>
                                         </connections>

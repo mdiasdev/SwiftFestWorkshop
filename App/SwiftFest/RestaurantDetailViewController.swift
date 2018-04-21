@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+protocol CreateReservationDelegate: class {
+    func pop()
+}
+
 class RestaurantDetailViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -64,6 +68,7 @@ class RestaurantDetailViewController: UIViewController {
 
         if let controller = segue.destination as? CreateReservationViewController {
             controller.restaurantId = restaurant?.id ?? -1
+            controller.delegate = self
         }
     }
 
@@ -86,6 +91,12 @@ class RestaurantDetailViewController: UIViewController {
         }
     }
 
+}
+
+extension RestaurantDetailViewController: CreateReservationDelegate {
+    func pop() {
+        self.navigationController?.popToRootViewController(animated: false)
+    }
 }
 
 extension RestaurantDetailViewController: CLLocationManagerDelegate { }
