@@ -36,18 +36,18 @@
                     </tabBar>
                     <connections>
                         <segue destination="cLe-YE-qDM" kind="relationship" relationship="viewControllers" id="Uyh-pJ-YIK"/>
-                        <segue destination="azo-4c-ffY" kind="relationship" relationship="viewControllers" id="W5X-Yw-nrf"/>
+                        <segue destination="YM6-iA-73R" kind="relationship" relationship="viewControllers" id="woT-IT-lLe"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYf-s5-t9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-353" y="307"/>
         </scene>
-        <!--Item-->
+        <!--Restaurants-->
         <scene sceneID="45d-uF-wXD">
             <objects>
                 <navigationController id="cLe-YE-qDM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="MUu-0f-c4b"/>
+                    <tabBarItem key="tabBarItem" title="Restaurants" image="Restaurants" id="MUu-0f-c4b"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="18U-NF-d83">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -305,10 +305,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptg-MP-iX9">
+                                <rect key="frame" x="335" y="20" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ptg-MP-iX9" secondAttribute="height" multiplier="1:1" id="mfB-dW-dw6"/>
+                                </constraints>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="cancelTapped:" destination="DMV-sM-yFH" eventType="touchUpInside" id="1ph-oP-bUu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Hal-tj-9kj" firstAttribute="leading" secondItem="BVm-jN-5Rx" secondAttribute="leading" constant="30" id="4tZ-Qa-bAB"/>
+                            <constraint firstItem="BVm-jN-5Rx" firstAttribute="trailing" secondItem="Ptg-MP-iX9" secondAttribute="trailing" constant="16" id="S5x-e3-1bx"/>
+                            <constraint firstItem="Ptg-MP-iX9" firstAttribute="top" secondItem="BVm-jN-5Rx" secondAttribute="top" id="a9E-FC-sPw"/>
                             <constraint firstItem="BVm-jN-5Rx" firstAttribute="trailing" secondItem="Hal-tj-9kj" secondAttribute="trailing" constant="30" id="fqW-PV-u0n"/>
                             <constraint firstItem="Hal-tj-9kj" firstAttribute="centerY" secondItem="xNg-V8-org" secondAttribute="centerY" id="hu3-7b-jWv"/>
                         </constraints>
@@ -328,5 +340,6 @@
     <resources>
         <image name="Reservations" width="24" height="24"/>
         <image name="Restaurants" width="24" height="24"/>
+        <image name="cancel" width="24" height="24"/>
     </resources>
 </document>

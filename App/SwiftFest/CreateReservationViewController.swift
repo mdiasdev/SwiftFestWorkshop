@@ -58,6 +58,10 @@ class CreateReservationViewController: UIViewController {
         task.resume()
     }
 
+    @IBAction func cancelTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     func displayError(message: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Network error", message: message, preferredStyle: .alert)
