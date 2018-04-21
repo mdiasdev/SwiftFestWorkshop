@@ -8,6 +8,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/PerfectlySoft/Perfect-HTTPServer.git", from: "3.0.4"),
+        .package(url: "https://github.com/PerfectlySoft/Perfect-RequestLogger.git", from: "3.0.2"),
         .package(url: "https://github.com/SwiftORM/Postgres-StORM.git", from: "3.1.0")
     ],
     targets: [
@@ -15,6 +16,6 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "Server",
-            dependencies: ["PerfectHTTPServer","PostgresStORM"]),
+            dependencies: ["PerfectHTTPServer", "PerfectRequestLogger", "PostgresStORM"]),
     ]
 )

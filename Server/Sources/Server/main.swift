@@ -1,6 +1,7 @@
 import PerfectLib
 import PerfectHTTP
 import PerfectHTTPServer
+import PerfectRequestLogger
 
 import StORM
 import PostgresStORM
@@ -19,6 +20,18 @@ try? reservation.setup()
 
 let server = HTTPServer()
 server.serverPort = 8080
+
+// Define custom log file
+RequestLogFile.location = "./customHTTPLogFile.log"
+
+// Instantiate a logger
+let myLogger = RequestLogger()
+
+// Add the filters
+// Request filter at high priority to be executed first
+server.setRequestFilters([(myLogger, .high)])
+// Response filter at low priority to be executed last
+server.setResponseFilters([(myLogger, .low)])
 
 var routes = Routes()
 
