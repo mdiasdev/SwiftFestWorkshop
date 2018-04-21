@@ -30,6 +30,7 @@ It is worth noting that this is not the most organized or thorough codebase. Cop
 
 If the database breaks during the conference:
 ```
+$ brew services start postgresql      // maybe just restarting it?
 $ psql      // tell us what the issues are
 $ brew services stop postgresql     // shut down the DB
 $ rm /usr/local/var/postgres/postmaster.pid       // remove the PostgreSQL process
