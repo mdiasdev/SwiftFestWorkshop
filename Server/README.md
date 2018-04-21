@@ -28,6 +28,7 @@ It is worth noting that this is not the most organized or thorough codebase. Cop
 
 ---
 
+## Disaster Recovery
 If the database breaks during the conference:
 ```
 $ brew services start postgresql      // maybe just restarting it?
