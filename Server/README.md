@@ -1,4 +1,4 @@
-# SwiftFest17 Server
+# SwiftFest18 Server
 
 This is the server component for the watchOS Workshop. It is intended to simulate the basic CRUD necessary to mimic a reservation booking system. The server is built totally in Swift using the [Perfect Framework](http://perfect.org).
 
@@ -16,7 +16,7 @@ $ swift package generate-xcodeproj
 ```
 For the project to actually run, you'll need to setup up your database.
 ```
-$ createuser -D -P perfect // when prompted for a password, enter: perfect
+$ createuser -D -P perfect              // when prompted for a password, enter: perfect
 $ createdb -O perfect swiftfest
 ```
 
@@ -24,3 +24,14 @@ $ createdb -O perfect swiftfest
 This server is based off of the tutorial provided by [Ray Wenderlich](https://videos.raywenderlich.com/courses/77-server-side-swift-with-perfect). With some help from the [Perfect Examples](https://github.com/PerfectExamples).
 
 It is worth noting that this is not the most organized or thorough codebase. Copy these patterns at your own risk.
+
+
+---
+
+If the database breaks during the conference:
+```
+$ psql      // tell us what the issues are
+$ brew services stop postgresql     // shut down the DB
+$ rm /usr/local/var/postgres/postmaster.pid       // remove the PostgreSQL process
+$ m -rf /usr/local/var/postgres && initdb /usr/local/var/postgres -E utf8       // scorched earth
+```
