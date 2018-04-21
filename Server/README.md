@@ -28,12 +28,18 @@ It is worth noting that this is not the most organized or thorough codebase. Cop
 
 ---
 
+
 ## Disaster Recovery
+
 If the database breaks during the conference:
 ```
 $ brew services start postgresql      // maybe just restarting it?
 $ psql      // tell us what the issues are
 $ brew services stop postgresql     // shut down the DB
+```
+
+Worst case scenario:
+```
 $ rm /usr/local/var/postgres/postmaster.pid       // remove the PostgreSQL process
-$ m -rf /usr/local/var/postgres && initdb /usr/local/var/postgres -E utf8       // scorched earth
+$ rm -rf /usr/local/var/postgres && initdb /usr/local/var/postgres -E utf8       // scorched earth
 ```
