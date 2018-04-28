@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D81DBF0209502CD0030987B /* ReservationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81DBEF209502CD0030987B /* ReservationDetailsViewController.swift */; };
 		6D92849B2083DB84000B5C7B /* CreateReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */; };
 		6DB8CB4B1FA52A3F0038365A /* RestaurantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */; };
 		6DB8CB4E1FA533450038365A /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8CB4D1FA533450038365A /* Restaurant.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D81DBEF209502CD0030987B /* ReservationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailsViewController.swift; sourceTree = "<group>"; };
 		6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReservationViewController.swift; sourceTree = "<group>"; };
 		6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsTableViewController.swift; sourceTree = "<group>"; };
 		6DB8CB4D1FA533450038365A /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -45,6 +47,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D81DBF1209502D40030987B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6D81DBF3209502F20030987B /* Reservation */,
+				6D81DBF2209502E30030987B /* Restaurant */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6D81DBF2209502E30030987B /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */,
+				6DB8CB4F1FA812800038365A /* RestaurantDetailViewController.swift */,
+				6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		6D81DBF3209502F20030987B /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				6D81DBEF209502CD0030987B /* ReservationDetailsViewController.swift */,
+				6DD91786208BF44300AD31C6 /* ReservationsTableViewController.swift */,
+			);
+			path = Reservation;
+			sourceTree = "<group>";
+		};
 		6DB8CB4C1FA532BC0038365A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,11 +103,8 @@
 		6DEA782D1F895CAA00345B38 /* SwiftFest */ = {
 			isa = PBXGroup;
 			children = (
-				6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */,
-				6DB8CB4F1FA812800038365A /* RestaurantDetailViewController.swift */,
-				6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */,
-				6DD91786208BF44300AD31C6 /* ReservationsTableViewController.swift */,
 				6DB8CB4C1FA532BC0038365A /* Models */,
+				6D81DBF1209502D40030987B /* Views */,
 				6DEA782E1F895CAA00345B38 /* AppDelegate.swift */,
 				6DEA78321F895CAA00345B38 /* Main.storyboard */,
 				6DEA78351F895CAA00345B38 /* Assets.xcassets */,
@@ -159,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D81DBF0209502CD0030987B /* ReservationDetailsViewController.swift in Sources */,
 				6DB8CB4B1FA52A3F0038365A /* RestaurantsTableViewController.swift in Sources */,
 				6DD91787208BF44300AD31C6 /* ReservationsTableViewController.swift in Sources */,
 				6DEA782F1F895CAA00345B38 /* AppDelegate.swift in Sources */,
