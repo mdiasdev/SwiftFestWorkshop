@@ -457,7 +457,7 @@
                             <constraint firstItem="Iil-Tc-VYF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9rW-rO-AbY" secondAttribute="trailing" constant="30" id="1b1-id-YwH"/>
                             <constraint firstItem="6Oc-6X-gSz" firstAttribute="trailing" secondItem="507-0I-ZAd" secondAttribute="trailing" constant="67.5" id="7Tu-OU-xug"/>
                             <constraint firstItem="w0y-qB-mNJ" firstAttribute="leading" secondItem="507-0I-ZAd" secondAttribute="leading" id="9C7-Lu-vRm"/>
-                            <constraint firstItem="6Oc-6X-gSz" firstAttribute="trailing" secondItem="Xla-hQ-CMi" secondAttribute="trailing" constant="266" id="JQp-bo-dqu"/>
+                            <constraint firstItem="6Oc-6X-gSz" firstAttribute="trailing" secondItem="Xla-hQ-CMi" secondAttribute="trailing" constant="15" id="JQp-bo-dqu"/>
                             <constraint firstItem="JOI-aG-spq" firstAttribute="centerX" secondItem="yc2-5b-fZA" secondAttribute="centerX" id="JiC-sg-abH"/>
                             <constraint firstItem="w0y-qB-mNJ" firstAttribute="top" secondItem="6Oc-6X-gSz" secondAttribute="top" constant="57" id="Kny-UZ-tWS"/>
                             <constraint firstItem="9rW-rO-AbY" firstAttribute="leading" secondItem="6Oc-6X-gSz" secondAttribute="leading" constant="25" id="OcL-iF-20k"/>
@@ -466,7 +466,7 @@
                             <constraint firstItem="6Oc-6X-gSz" firstAttribute="trailing" secondItem="V27-Gq-2GE" secondAttribute="trailing" constant="15" id="Y1g-0t-XKc"/>
                             <constraint firstItem="6Oc-6X-gSz" firstAttribute="bottom" secondItem="V27-Gq-2GE" secondAttribute="bottom" constant="15" id="ZDL-Z9-AbY"/>
                             <constraint firstItem="JOI-aG-spq" firstAttribute="top" secondItem="6Oc-6X-gSz" secondAttribute="top" constant="15" id="ajj-8o-6d6"/>
-                            <constraint firstItem="6Oc-6X-gSz" firstAttribute="trailing" secondItem="w0y-qB-mNJ" secondAttribute="trailing" constant="266" id="baN-7l-VY4"/>
+                            <constraint firstItem="6Oc-6X-gSz" firstAttribute="trailing" secondItem="w0y-qB-mNJ" secondAttribute="trailing" constant="15" id="baN-7l-VY4"/>
                             <constraint firstItem="qnD-dX-Z8P" firstAttribute="centerX" secondItem="yc2-5b-fZA" secondAttribute="centerX" id="blJ-Yg-Gip"/>
                             <constraint firstItem="507-0I-ZAd" firstAttribute="leading" secondItem="6Oc-6X-gSz" secondAttribute="leading" constant="67.5" id="cvs-SM-0VY"/>
                             <constraint firstItem="6Oc-6X-gSz" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qnD-dX-Z8P" secondAttribute="trailing" constant="15" id="d4p-ci-MrU"/>
