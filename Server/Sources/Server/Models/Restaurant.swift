@@ -23,8 +23,10 @@ class Restaurant: PostgresStORM {
         id = this.data["id"] as? Int ?? 0
         name = this.data["name"] as? String ?? ""
         phoneNumber = this.data["phonenumber"] as? String ?? ""
-        latitude = this.data["latitude"] as? Float ?? 0.0
-        longitude = this.data["longitude"] as? Float ?? 0.0
+        let latString = this.data["latitude"] as? String ?? ""
+        latitude = Float(latString) ?? 0.0
+        let lonString = this.data["longitude"] as? String ?? ""
+        longitude = Float(lonString) ?? 0.0
         website = this.data["website"] as? String ?? ""
     }
 
