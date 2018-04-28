@@ -389,7 +389,7 @@
         <!--Restaurant Detail-->
         <scene sceneID="KwQ-jm-xvg">
             <objects>
-                <viewController title="Restaurant Detail" id="EOl-Nm-nk3" customClass="RestaurantDetailViewController" customModule="SwiftFest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Restaurant Detail" id="EOl-Nm-nk3" customClass="ReservationDetailsViewController" customModule="SwiftFest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yc2-5b-fZA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -408,6 +408,9 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelTapped:" destination="EOl-Nm-nk3" eventType="touchUpInside" id="wv8-DV-Pxy"/>
+                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="507-0I-ZAd">
                                 <rect key="frame" x="67" y="152" width="240" height="128"/>
@@ -477,11 +480,13 @@
                         <viewLayoutGuide key="safeArea" id="6Oc-6X-gSz"/>
                     </view>
                     <connections>
-                        <outlet property="addressLabel" destination="qnD-dX-Z8P" id="OYK-P1-xq9"/>
-                        <outlet property="mapView" destination="507-0I-ZAd" id="OPi-Mp-iR6"/>
-                        <outlet property="phoneButton" destination="Iil-Tc-VYF" id="Jv4-n6-NeK"/>
-                        <outlet property="titleLabel" destination="JOI-aG-spq" id="KTj-Nm-Tsm"/>
-                        <outlet property="websiteButton" destination="9rW-rO-AbY" id="MSA-Xj-F7a"/>
+                        <outlet property="addressLabel" destination="qnD-dX-Z8P" id="gp4-Xy-Lvy"/>
+                        <outlet property="mapView" destination="507-0I-ZAd" id="tb3-SJ-qDy"/>
+                        <outlet property="partySizeLabel" destination="w0y-qB-mNJ" id="ZDz-Yp-Hux"/>
+                        <outlet property="phoneButton" destination="Iil-Tc-VYF" id="OXc-Bo-GXu"/>
+                        <outlet property="reservationTimeLabel" destination="Xla-hQ-CMi" id="upQ-ck-Nr9"/>
+                        <outlet property="titleLabel" destination="JOI-aG-spq" id="nQN-LN-cPr"/>
+                        <outlet property="websiteButton" destination="9rW-rO-AbY" id="cVG-Ax-vpE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ia-Ne-TVV" userLabel="First Responder" sceneMemberID="firstResponder"/>

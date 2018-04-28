@@ -52,6 +52,9 @@ class ReservationsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if let viewController =  segue.destination as? ReservationDetailsViewController {
+            let index = tableView.indexPathForSelectedRow?.row
+            viewController.reservation = reservations[index!]
+        }
     }
 }
