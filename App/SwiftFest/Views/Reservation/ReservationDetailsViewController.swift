@@ -65,6 +65,39 @@ class ReservationDetailsViewController: UIViewController {
     }
 
     @IBAction func cancelTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Cancel Reservation", message: "Are you sure you want to cancel your reservation?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes, cancel", style: .destructive, handler: { _ in
+            self.cancelReservation()
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func cancelReservation() {
+        var request = URLRequest(url: URL(string: "http://localhost:8080/reservation/\(reservation!.id)")!)
+        request.httpMethod = "DELETE"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else { print(error.debugDescription); return}
+
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode < 400  else { print(response.debugDescription); return}
+            
+            if var storedReservations = UserDefaults.standard.array(forKey: "reservations") as? [[String: Any]] {
+                if storedReservations.count == 1 {
+                    UserDefaults.standard.removeObject(forKey: "reservations")
+                } else {
+                    for (index, res) in storedReservations.enumerated() {
+                        if res["id"] as? Int == self.reservation!.id {
+                            storedReservations.remove(at: index)
+                        }
+                    }
+                    UserDefaults.standard.set(storedReservations, forKey: "reservations")
+                }
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        
+        task.resume()
     }
     
     private func getAdressName(location: CLLocation) {
