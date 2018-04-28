@@ -17,26 +17,7 @@
 		6DEA78341F895CAA00345B38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEA78321F895CAA00345B38 /* Main.storyboard */; };
 		6DEA78361F895CAA00345B38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DEA78351F895CAA00345B38 /* Assets.xcassets */; };
 		6DEA78391F895CAA00345B38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEA78371F895CAA00345B38 /* LaunchScreen.storyboard */; };
-		6DEA78441F895CAA00345B38 /* SwiftFestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEA78431F895CAA00345B38 /* SwiftFestTests.swift */; };
-		6DEA784F1F895CAA00345B38 /* SwiftFestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEA784E1F895CAA00345B38 /* SwiftFestUITests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6DEA78401F895CAA00345B38 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6DEA78231F895CAA00345B38 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6DEA782A1F895CAA00345B38;
-			remoteInfo = SwiftFest;
-		};
-		6DEA784B1F895CAA00345B38 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6DEA78231F895CAA00345B38 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6DEA782A1F895CAA00345B38;
-			remoteInfo = SwiftFest;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReservationViewController.swift; sourceTree = "<group>"; };
@@ -51,30 +32,10 @@
 		6DEA78351F895CAA00345B38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DEA78381F895CAA00345B38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DEA783A1F895CAA00345B38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DEA783F1F895CAA00345B38 /* SwiftFestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DEA78431F895CAA00345B38 /* SwiftFestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFestTests.swift; sourceTree = "<group>"; };
-		6DEA78451F895CAA00345B38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DEA784A1F895CAA00345B38 /* SwiftFestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DEA784E1F895CAA00345B38 /* SwiftFestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFestUITests.swift; sourceTree = "<group>"; };
-		6DEA78501F895CAA00345B38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6DEA78281F895CAA00345B38 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DEA783C1F895CAA00345B38 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DEA78471F895CAA00345B38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -97,8 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				6DEA782D1F895CAA00345B38 /* SwiftFest */,
-				6DEA78421F895CAA00345B38 /* SwiftFestTests */,
-				6DEA784D1F895CAA00345B38 /* SwiftFestUITests */,
 				6DEA782C1F895CAA00345B38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				6DEA782B1F895CAA00345B38 /* SwiftFest.app */,
-				6DEA783F1F895CAA00345B38 /* SwiftFestTests.xctest */,
-				6DEA784A1F895CAA00345B38 /* SwiftFestUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,24 +85,6 @@
 				6DEA783A1F895CAA00345B38 /* Info.plist */,
 			);
 			path = SwiftFest;
-			sourceTree = "<group>";
-		};
-		6DEA78421F895CAA00345B38 /* SwiftFestTests */ = {
-			isa = PBXGroup;
-			children = (
-				6DEA78431F895CAA00345B38 /* SwiftFestTests.swift */,
-				6DEA78451F895CAA00345B38 /* Info.plist */,
-			);
-			path = SwiftFestTests;
-			sourceTree = "<group>";
-		};
-		6DEA784D1F895CAA00345B38 /* SwiftFestUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6DEA784E1F895CAA00345B38 /* SwiftFestUITests.swift */,
-				6DEA78501F895CAA00345B38 /* Info.plist */,
-			);
-			path = SwiftFestUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,42 +107,6 @@
 			productReference = 6DEA782B1F895CAA00345B38 /* SwiftFest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6DEA783E1F895CAA00345B38 /* SwiftFestTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6DEA78561F895CAA00345B38 /* Build configuration list for PBXNativeTarget "SwiftFestTests" */;
-			buildPhases = (
-				6DEA783B1F895CAA00345B38 /* Sources */,
-				6DEA783C1F895CAA00345B38 /* Frameworks */,
-				6DEA783D1F895CAA00345B38 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6DEA78411F895CAA00345B38 /* PBXTargetDependency */,
-			);
-			name = SwiftFestTests;
-			productName = SwiftFestTests;
-			productReference = 6DEA783F1F895CAA00345B38 /* SwiftFestTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6DEA78491F895CAA00345B38 /* SwiftFestUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6DEA78591F895CAA00345B38 /* Build configuration list for PBXNativeTarget "SwiftFestUITests" */;
-			buildPhases = (
-				6DEA78461F895CAA00345B38 /* Sources */,
-				6DEA78471F895CAA00345B38 /* Frameworks */,
-				6DEA78481F895CAA00345B38 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6DEA784C1F895CAA00345B38 /* PBXTargetDependency */,
-			);
-			name = SwiftFestUITests;
-			productName = SwiftFestUITests;
-			productReference = 6DEA784A1F895CAA00345B38 /* SwiftFestUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -217,16 +120,6 @@
 					6DEA782A1F895CAA00345B38 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
-					};
-					6DEA783E1F895CAA00345B38 = {
-						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 6DEA782A1F895CAA00345B38;
-					};
-					6DEA78491F895CAA00345B38 = {
-						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 6DEA782A1F895CAA00345B38;
 					};
 				};
 			};
@@ -244,8 +137,6 @@
 			projectRoot = "";
 			targets = (
 				6DEA782A1F895CAA00345B38 /* SwiftFest */,
-				6DEA783E1F895CAA00345B38 /* SwiftFestTests */,
-				6DEA78491F895CAA00345B38 /* SwiftFestUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,20 +149,6 @@
 				6DEA78391F895CAA00345B38 /* LaunchScreen.storyboard in Resources */,
 				6DEA78361F895CAA00345B38 /* Assets.xcassets in Resources */,
 				6DEA78341F895CAA00345B38 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DEA783D1F895CAA00345B38 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DEA78481F895CAA00345B38 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,36 +169,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DEA783B1F895CAA00345B38 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6DEA78441F895CAA00345B38 /* SwiftFestTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DEA78461F895CAA00345B38 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6DEA784F1F895CAA00345B38 /* SwiftFestUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6DEA78411F895CAA00345B38 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6DEA782A1F895CAA00345B38 /* SwiftFest */;
-			targetProxy = 6DEA78401F895CAA00345B38 /* PBXContainerItemProxy */;
-		};
-		6DEA784C1F895CAA00345B38 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6DEA782A1F895CAA00345B38 /* SwiftFest */;
-			targetProxy = 6DEA784B1F895CAA00345B38 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6DEA78321F895CAA00345B38 /* Main.storyboard */ = {
@@ -484,72 +332,6 @@
 			};
 			name = Release;
 		};
-		6DEA78571F895CAA00345B38 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3Z4ZDG98FM;
-				INFOPLIST_FILE = SwiftFestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.SwiftFestTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftFest.app/SwiftFest";
-			};
-			name = Debug;
-		};
-		6DEA78581F895CAA00345B38 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3Z4ZDG98FM;
-				INFOPLIST_FILE = SwiftFestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.SwiftFestTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftFest.app/SwiftFest";
-			};
-			name = Release;
-		};
-		6DEA785A1F895CAA00345B38 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3Z4ZDG98FM;
-				INFOPLIST_FILE = SwiftFestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.SwiftFestUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwiftFest;
-			};
-			name = Debug;
-		};
-		6DEA785B1F895CAA00345B38 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3Z4ZDG98FM;
-				INFOPLIST_FILE = SwiftFestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.SwiftFestUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwiftFest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -567,24 +349,6 @@
 			buildConfigurations = (
 				6DEA78541F895CAA00345B38 /* Debug */,
 				6DEA78551F895CAA00345B38 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6DEA78561F895CAA00345B38 /* Build configuration list for PBXNativeTarget "SwiftFestTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6DEA78571F895CAA00345B38 /* Debug */,
-				6DEA78581F895CAA00345B38 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6DEA78591F895CAA00345B38 /* Build configuration list for PBXNativeTarget "SwiftFestUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6DEA785A1F895CAA00345B38 /* Debug */,
-				6DEA785B1F895CAA00345B38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
