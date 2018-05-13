@@ -8,24 +8,9 @@
 
 import Foundation
 
-struct Reservation {
+struct Reservation: Codable {
     var id: Int
     var restaurant: Restaurant
     var date: String
     var partySize: Int
-
-    init?(json: [String: Any]) {
-        guard let id = json["id"] as? Int,
-            let partySize = json["partySize"] as? Int,
-            let date = json["date"] as? String,
-            let restaurantJson = json["restaurant"] as? [String: Any],
-            let restaurant = Restaurant(json: restaurantJson) else {
-                return nil
-        }
-
-        self.id = id
-        self.restaurant = restaurant
-        self.date = date
-        self.partySize = partySize
-    }
 }

@@ -53,7 +53,8 @@ class RestaurantsTableViewController: UITableViewController {
 
             var restaurants: [Restaurant] = []
             for json in responseJson! {
-                if let restuarant = Restaurant(json: json) {
+                guard let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) else { return }
+                if let restuarant = try? JSONDecoder().decode(Restaurant.self, from: data) {
                     restaurants.append(restuarant)
                 }
             }

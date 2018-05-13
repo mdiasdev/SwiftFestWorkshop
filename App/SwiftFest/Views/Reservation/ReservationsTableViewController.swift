@@ -24,7 +24,8 @@ class ReservationsTableViewController: UITableViewController {
         guard let storedReservations = UserDefaults.standard.array(forKey: "reservations") as? [[String: Any]] else { return }
 
         for json in storedReservations {
-            if let reservation = Reservation(json: json), !reservations.contains(where: {$0.id == reservation.id}) {
+            guard let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) else { return }
+            if let reservation = try? JSONDecoder().decode(Reservation.self, from: data), !reservations.contains(where: {$0.id == reservation.id}) {
                 reservations.append(reservation)
             }
         }
