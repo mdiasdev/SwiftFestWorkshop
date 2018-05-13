@@ -39,7 +39,7 @@
                                 <label width="134" alignment="left" text="Label" textAlignment="center" id="lIu-q1-WPz"/>
                             </items>
                         </group>
-                        <group width="1" height="42" alignment="left" id="xko-dr-nOj"/>
+                        <group width="1" height="62" alignment="left" id="xko-dr-nOj"/>
                         <button width="1" alignment="left" title="Edit Reservation" id="Uox-R4-5Nm">
                             <connections>
                                 <segue destination="Ixt-YE-rHc" kind="modal" id="eQs-Wq-nZq"/>
