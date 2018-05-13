@@ -94,9 +94,12 @@ class ReservationDetailsViewController: UIViewController {
                     UserDefaults.standard.set(storedReservations, forKey: "reservations")
 
                 }
-                
+
                 DispatchQueue.main.async {
                     UserDefaults.standard.synchronize()
+                    if WatchManager.main.isSupported() {
+                        WatchManager.main.send(json: [:])
+                    }
                     self.navigationController?.popViewController(animated: true)
                 }
             }

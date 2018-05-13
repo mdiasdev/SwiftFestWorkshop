@@ -14,6 +14,7 @@
 		6D0C770C20A8893400ECC784 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C770B20A8893400ECC784 /* ExtensionDelegate.swift */; };
 		6D0C770E20A8893500ECC784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D0C770D20A8893500ECC784 /* Assets.xcassets */; };
 		6D0C771220A8893500ECC784 /* SwiftFestWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6D0C76F820A8893300ECC784 /* SwiftFestWatch.app */; };
+		6D0C772020A895C400ECC784 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C771F20A895C400ECC784 /* WatchManager.swift */; };
 		6D81DBF0209502CD0030987B /* ReservationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81DBEF209502CD0030987B /* ReservationDetailsViewController.swift */; };
 		6D92849B2083DB84000B5C7B /* CreateReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */; };
 		6DB8CB4B1FA52A3F0038365A /* RestaurantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */; };
@@ -79,6 +80,7 @@
 		6D0C770B20A8893400ECC784 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		6D0C770D20A8893500ECC784 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D0C770F20A8893500ECC784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D0C771F20A895C400ECC784 /* WatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		6D81DBEF209502CD0030987B /* ReservationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailsViewController.swift; sourceTree = "<group>"; };
 		6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReservationViewController.swift; sourceTree = "<group>"; };
 		6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsTableViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 				6D0C770F20A8893500ECC784 /* Info.plist */,
 			);
 			path = "SwiftFestWatch Extension";
+			sourceTree = "<group>";
+		};
+		6D0C771E20A895C400ECC784 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6D0C771F20A895C400ECC784 /* WatchManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		6D81DBF1209502D40030987B /* Views */ = {
@@ -193,6 +203,7 @@
 		6DEA782D1F895CAA00345B38 /* SwiftFest */ = {
 			isa = PBXGroup;
 			children = (
+				6D0C771E20A895C400ECC784 /* Managers */,
 				6DB8CB4C1FA532BC0038365A /* Models */,
 				6D81DBF1209502D40030987B /* Views */,
 				6DEA782E1F895CAA00345B38 /* AppDelegate.swift */,
@@ -350,6 +361,7 @@
 			files = (
 				6D81DBF0209502CD0030987B /* ReservationDetailsViewController.swift in Sources */,
 				6DB8CB4B1FA52A3F0038365A /* RestaurantsTableViewController.swift in Sources */,
+				6D0C772020A895C400ECC784 /* WatchManager.swift in Sources */,
 				6DD91787208BF44300AD31C6 /* ReservationsTableViewController.swift in Sources */,
 				6DEA782F1F895CAA00345B38 /* AppDelegate.swift in Sources */,
 				6DD91785208BF0E700AD31C6 /* Reservation.swift in Sources */,

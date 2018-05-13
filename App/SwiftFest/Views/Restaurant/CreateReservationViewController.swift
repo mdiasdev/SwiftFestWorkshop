@@ -83,6 +83,10 @@ class CreateReservationViewController: UIViewController {
         var allReservations = UserDefaults.standard.array(forKey: "reservations") ?? [[String: Any]]()
         allReservations.append(reservation)
         UserDefaults.standard.set(allReservations, forKey: "reservations")
+
+        if WatchManager.main.isSupported() {
+            WatchManager.main.send(json: reservation)
+        }
     }
 
     func changeToReservationsTab() {
