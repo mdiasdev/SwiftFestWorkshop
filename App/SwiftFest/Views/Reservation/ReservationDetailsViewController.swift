@@ -92,8 +92,13 @@ class ReservationDetailsViewController: UIViewController {
                         }
                     }
                     UserDefaults.standard.set(storedReservations, forKey: "reservations")
+
                 }
-                self.navigationController?.popViewController(animated: true)
+                
+                DispatchQueue.main.async {
+                    UserDefaults.standard.synchronize()
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
         

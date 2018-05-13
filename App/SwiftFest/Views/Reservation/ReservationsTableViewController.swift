@@ -21,10 +21,19 @@ class ReservationsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        guard let storedReservations = UserDefaults.standard.array(forKey: "reservations") as? [[String: Any]] else { return }
+        guard let storedReservations = UserDefaults.standard.array(forKey: "reservations") as? [[String: Any]] else {
+            reservations = []
+            self.tableView.reloadData()
+            return
+
+        }
 
         for json in storedReservations {
-            guard let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) else { return }
+            guard let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) else {
+                self.tableView.reloadData()
+                return
+            }
+
             if let reservation = try? JSONDecoder().decode(Reservation.self, from: data), !reservations.contains(where: {$0.id == reservation.id}) {
                 reservations.append(reservation)
             }
