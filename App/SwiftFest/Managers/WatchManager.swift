@@ -13,10 +13,11 @@ class WatchManager: NSObject {
     static let main = WatchManager()
 
     func isSupported() -> Bool {
-        if (WCSession.isSupported()) {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
+        guard WCSession.default.activationState != .activated else { return true }
+
+        if WCSession.isSupported() {
+            WCSession.default.delegate = self
+            WCSession.default.activate()
             return true
         }
 
@@ -24,7 +25,7 @@ class WatchManager: NSObject {
     }
 
     func send(json: [String: Any]) {
-        if (WCSession.default.isReachable) {
+        if WCSession.default.activationState == .activated && WCSession.default.isReachable {
             WCSession.default.sendMessage(json, replyHandler: nil)
         }
     }
@@ -33,14 +34,14 @@ class WatchManager: NSObject {
 extension WatchManager: WCSessionDelegate {
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print("activationDidCompleteWith")
+        print("App: activationDidCompleteWith")
     }
 
     func sessionDidBecomeInactive(_ session: WCSession) {
-        print("sessionDidBecomeInactive")
+        print("App: sessionDidBecomeInactive")
     }
 
     func sessionDidDeactivate(_ session: WCSession) {
-        print("sessionDidDeactivate")
+        print("App: sessionDidDeactivate")
     }
 }
