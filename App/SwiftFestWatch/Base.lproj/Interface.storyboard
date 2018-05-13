@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UAq-s1-Rpy">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,18 +9,62 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Map Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SwiftFestWatch" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="MapInterfaceController" customModule="SwiftFestWatch_Extension">
                     <items>
-                        <label alignment="left" text="Label" id="K3w-5e-3xz"/>
+                        <label alignment="left" text="Open in Maps" id="K3w-5e-3xz"/>
+                        <group width="1" height="3" alignment="left" id="ZwD-2G-fCU"/>
+                        <map height="100" alignment="left" id="wXC-6c-7Jn"/>
                     </items>
                     <connections>
+                        <outlet property="map" destination="wXC-6c-7Jn" id="9pM-N9-lHE"/>
                         <outlet property="testLabel" destination="K3w-5e-3xz" id="0bT-V9-COw"/>
                     </connections>
                 </controller>
             </objects>
+            <point key="canvasLocation" x="391" y="130"/>
+        </scene>
+        <!--Reservation Details Interface Controller-->
+        <scene sceneID="5a8-pV-pRn">
+            <objects>
+                <controller id="UAq-s1-Rpy" customClass="ReservationDetailsInterfaceController" customModule="SwiftFestWatch_Extension">
+                    <items>
+                        <group width="1" alignment="center" layout="vertical" id="BQk-TY-u2o">
+                            <items>
+                                <label width="136" alignment="left" text="Center" textAlignment="center" baselineAdjustment="alignCenters" id="BRc-xC-5kZ">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label width="134" alignment="left" text="Label" textAlignment="center" id="lIu-q1-WPz"/>
+                            </items>
+                        </group>
+                        <group width="1" height="42" alignment="left" id="xko-dr-nOj"/>
+                        <button width="1" alignment="left" title="Edit Reservation" id="Uox-R4-5Nm">
+                            <connections>
+                                <segue destination="Ixt-YE-rHc" kind="modal" id="eQs-Wq-nZq"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="reservationTimeLabel" destination="lIu-q1-WPz" id="N7l-WZ-uFq"/>
+                        <outlet property="restaurantNameLabel" destination="BRc-xC-5kZ" id="3hM-Yj-EUG"/>
+                        <segue destination="AgC-eL-Hgc" kind="relationship" relationship="nextPage" id="B9r-Jh-kgF"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="112" y="130"/>
+        </scene>
+        <!--Edit Reservation Interface Controller-->
+        <scene sceneID="sUV-W2-DHR">
+            <objects>
+                <controller id="Ixt-YE-rHc" customClass="EditReservationInterfaceController" customModule="SwiftFestWatch_Extension">
+                    <items>
+                        <label alignment="left" text="Edit" id="6IT-KJ-0aT"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="112" y="506"/>
         </scene>
     </scenes>
 </document>
