@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D0C76FC20A8893300ECC784 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D0C76FA20A8893300ECC784 /* Interface.storyboard */; };
+		6D0C76FE20A8893400ECC784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D0C76FD20A8893400ECC784 /* Assets.xcassets */; };
+		6D0C770520A8893400ECC784 /* SwiftFestWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D0C770420A8893400ECC784 /* SwiftFestWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6D0C770A20A8893400ECC784 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C770920A8893400ECC784 /* InterfaceController.swift */; };
+		6D0C770C20A8893400ECC784 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C770B20A8893400ECC784 /* ExtensionDelegate.swift */; };
+		6D0C770E20A8893500ECC784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D0C770D20A8893500ECC784 /* Assets.xcassets */; };
+		6D0C771220A8893500ECC784 /* SwiftFestWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6D0C76F820A8893300ECC784 /* SwiftFestWatch.app */; };
 		6D81DBF0209502CD0030987B /* ReservationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81DBEF209502CD0030987B /* ReservationDetailsViewController.swift */; };
 		6D92849B2083DB84000B5C7B /* CreateReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */; };
 		6DB8CB4B1FA52A3F0038365A /* RestaurantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */; };
@@ -20,7 +27,58 @@
 		6DEA78391F895CAA00345B38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEA78371F895CAA00345B38 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6D0C770620A8893400ECC784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DEA78231F895CAA00345B38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D0C770320A8893400ECC784;
+			remoteInfo = "SwiftFestWatch Extension";
+		};
+		6D0C771020A8893500ECC784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DEA78231F895CAA00345B38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D0C76F720A8893300ECC784;
+			remoteInfo = SwiftFestWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6D0C771820A8893500ECC784 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6D0C770520A8893400ECC784 /* SwiftFestWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D0C771A20A8893500ECC784 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6D0C771220A8893500ECC784 /* SwiftFestWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6D0C76F820A8893300ECC784 /* SwiftFestWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFestWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D0C76FB20A8893300ECC784 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6D0C76FD20A8893400ECC784 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6D0C76FF20A8893400ECC784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D0C770420A8893400ECC784 /* SwiftFestWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SwiftFestWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D0C770920A8893400ECC784 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6D0C770B20A8893400ECC784 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		6D0C770D20A8893500ECC784 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6D0C770F20A8893500ECC784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D81DBEF209502CD0030987B /* ReservationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailsViewController.swift; sourceTree = "<group>"; };
 		6D92849A2083DB84000B5C7B /* CreateReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReservationViewController.swift; sourceTree = "<group>"; };
 		6DB8CB4A1FA52A3F0038365A /* RestaurantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsTableViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +95,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6D0C770120A8893400ECC784 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DEA78281F895CAA00345B38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +112,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D0C76F920A8893300ECC784 /* SwiftFestWatch */ = {
+			isa = PBXGroup;
+			children = (
+				6D0C76FA20A8893300ECC784 /* Interface.storyboard */,
+				6D0C76FD20A8893400ECC784 /* Assets.xcassets */,
+				6D0C76FF20A8893400ECC784 /* Info.plist */,
+			);
+			path = SwiftFestWatch;
+			sourceTree = "<group>";
+		};
+		6D0C770820A8893400ECC784 /* SwiftFestWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6D0C770920A8893400ECC784 /* InterfaceController.swift */,
+				6D0C770B20A8893400ECC784 /* ExtensionDelegate.swift */,
+				6D0C770D20A8893500ECC784 /* Assets.xcassets */,
+				6D0C770F20A8893500ECC784 /* Info.plist */,
+			);
+			path = "SwiftFestWatch Extension";
+			sourceTree = "<group>";
+		};
 		6D81DBF1209502D40030987B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				6DEA782D1F895CAA00345B38 /* SwiftFest */,
+				6D0C76F920A8893300ECC784 /* SwiftFestWatch */,
+				6D0C770820A8893400ECC784 /* SwiftFestWatch Extension */,
 				6DEA782C1F895CAA00345B38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				6DEA782B1F895CAA00345B38 /* SwiftFest.app */,
+				6D0C76F820A8893300ECC784 /* SwiftFestWatch.app */,
+				6D0C770420A8893400ECC784 /* SwiftFestWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +207,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6D0C76F720A8893300ECC784 /* SwiftFestWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D0C771920A8893500ECC784 /* Build configuration list for PBXNativeTarget "SwiftFestWatch" */;
+			buildPhases = (
+				6D0C76F620A8893300ECC784 /* Resources */,
+				6D0C771820A8893500ECC784 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D0C770720A8893400ECC784 /* PBXTargetDependency */,
+			);
+			name = SwiftFestWatch;
+			productName = SwiftFestWatch;
+			productReference = 6D0C76F820A8893300ECC784 /* SwiftFestWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6D0C770320A8893400ECC784 /* SwiftFestWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D0C771720A8893500ECC784 /* Build configuration list for PBXNativeTarget "SwiftFestWatch Extension" */;
+			buildPhases = (
+				6D0C770020A8893400ECC784 /* Sources */,
+				6D0C770120A8893400ECC784 /* Frameworks */,
+				6D0C770220A8893400ECC784 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftFestWatch Extension";
+			productName = "SwiftFestWatch Extension";
+			productReference = 6D0C770420A8893400ECC784 /* SwiftFestWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		6DEA782A1F895CAA00345B38 /* SwiftFest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DEA78531F895CAA00345B38 /* Build configuration list for PBXNativeTarget "SwiftFest" */;
@@ -124,10 +248,12 @@
 				6DEA78271F895CAA00345B38 /* Sources */,
 				6DEA78281F895CAA00345B38 /* Frameworks */,
 				6DEA78291F895CAA00345B38 /* Resources */,
+				6D0C771A20A8893500ECC784 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6D0C771120A8893500ECC784 /* PBXTargetDependency */,
 			);
 			name = SwiftFest;
 			productName = SwiftFest;
@@ -140,10 +266,18 @@
 		6DEA78231F895CAA00345B38 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Matt Dias";
 				TargetAttributes = {
+					6D0C76F720A8893300ECC784 = {
+						CreatedOnToolsVersion = 9.3.1;
+						ProvisioningStyle = Automatic;
+					};
+					6D0C770320A8893400ECC784 = {
+						CreatedOnToolsVersion = 9.3.1;
+						ProvisioningStyle = Automatic;
+					};
 					6DEA782A1F895CAA00345B38 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -164,11 +298,30 @@
 			projectRoot = "";
 			targets = (
 				6DEA782A1F895CAA00345B38 /* SwiftFest */,
+				6D0C76F720A8893300ECC784 /* SwiftFestWatch */,
+				6D0C770320A8893400ECC784 /* SwiftFestWatch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6D0C76F620A8893300ECC784 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D0C76FE20A8893400ECC784 /* Assets.xcassets in Resources */,
+				6D0C76FC20A8893300ECC784 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D0C770220A8893400ECC784 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D0C770E20A8893500ECC784 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DEA78291F895CAA00345B38 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,6 +335,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6D0C770020A8893400ECC784 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D0C770C20A8893400ECC784 /* ExtensionDelegate.swift in Sources */,
+				6D0C770A20A8893400ECC784 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DEA78271F895CAA00345B38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -199,7 +361,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6D0C770720A8893400ECC784 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D0C770320A8893400ECC784 /* SwiftFestWatch Extension */;
+			targetProxy = 6D0C770620A8893400ECC784 /* PBXContainerItemProxy */;
+		};
+		6D0C771120A8893500ECC784 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D0C76F720A8893300ECC784 /* SwiftFestWatch */;
+			targetProxy = 6D0C771020A8893500ECC784 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		6D0C76FA20A8893300ECC784 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D0C76FB20A8893300ECC784 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		6DEA78321F895CAA00345B38 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -219,6 +402,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6D0C771320A8893500ECC784 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3Z4ZDG98FM;
+				IBSC_MODULE = SwiftFestWatch_Extension;
+				INFOPLIST_FILE = SwiftFestWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.SwiftFest.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		6D0C771420A8893500ECC784 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3Z4ZDG98FM;
+				IBSC_MODULE = SwiftFestWatch_Extension;
+				INFOPLIST_FILE = SwiftFestWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.SwiftFest.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		6D0C771520A8893500ECC784 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3Z4ZDG98FM;
+				INFOPLIST_FILE = "SwiftFestWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.SwiftFest.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		6D0C771620A8893500ECC784 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3Z4ZDG98FM;
+				INFOPLIST_FILE = "SwiftFestWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.SwiftFest.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
 		6DEA78511F895CAA00345B38 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -363,6 +624,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6D0C771720A8893500ECC784 /* Build configuration list for PBXNativeTarget "SwiftFestWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D0C771520A8893500ECC784 /* Debug */,
+				6D0C771620A8893500ECC784 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D0C771920A8893500ECC784 /* Build configuration list for PBXNativeTarget "SwiftFestWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D0C771320A8893500ECC784 /* Debug */,
+				6D0C771420A8893500ECC784 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6DEA78261F895CAA00345B38 /* Build configuration list for PBXProject "SwiftFest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
