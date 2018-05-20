@@ -13,6 +13,9 @@ typealias EditObject = (usage: String, reservation: Reservation)
 
 class StepperInterfaceController: WKInterfaceController {
 
+    var usage: String?
+    var reservation: Reservation?
+
     @IBOutlet var valueLabel: WKInterfaceLabel!
     
     override func awake(withContext context: Any?) {
@@ -21,8 +24,13 @@ class StepperInterfaceController: WKInterfaceController {
         // Configure interface objects here.
         guard let editContext = context as? EditObject else { return }
 
-        if editContext.usage == "party" {
-            valueLabel.setText("\(editContext.reservation.partySize)")
+        usage = editContext.usage
+        reservation = editContext.reservation
+
+        guard reservation != nil else { return }
+
+        if usage == "party" {
+            valueLabel.setText("\(reservation!.partySize)")
         }
     }
 
@@ -37,7 +45,20 @@ class StepperInterfaceController: WKInterfaceController {
     }
 
     @IBAction func plusTapped() {
+        guard reservation != nil else { return }
+
+        if usage == "party" {
+            reservation?.partySize += 1
+            valueLabel.setText("\(reservation!.partySize)")
+        }
     }
+
     @IBAction func minusTapped() {
+        guard reservation != nil, reservation!.partySize >= 1 else { return }
+
+        if usage == "party" {
+            reservation?.partySize -= 1
+            valueLabel.setText("\(reservation!.partySize)")
+        }
     }
 }
