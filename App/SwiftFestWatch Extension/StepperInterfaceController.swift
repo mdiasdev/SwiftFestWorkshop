@@ -26,6 +26,7 @@ class StepperInterfaceController: WKInterfaceController {
 
         usage = editContext.usage
         reservation = editContext.reservation
+        crownSequencer.delegate = self
 
         guard reservation != nil else { return }
 
@@ -37,6 +38,7 @@ class StepperInterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        crownSequencer.focus()
     }
 
     override func didDeactivate() {
@@ -59,6 +61,20 @@ class StepperInterfaceController: WKInterfaceController {
         if usage == "party" {
             reservation?.partySize -= 1
             valueLabel.setText("\(reservation!.partySize)")
+        }
+    }
+
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+        return reservation!
+    }
+}
+
+extension StepperInterfaceController: WKCrownDelegate {
+    func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
+        if rotationalDelta > 0 {
+            plusTapped()
+        } else {
+            minusTapped()
         }
     }
 }
