@@ -50,6 +50,11 @@ class ReservationDetailsInterfaceController: WKInterfaceController {
 
         self.reservation = reservation
     }
+    
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+        guard let reservation = reservation else { return nil }
+        return reservation
+    }
 }
 
 extension ReservationDetailsInterfaceController: WCSessionDelegate {

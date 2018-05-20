@@ -12,20 +12,19 @@ import Foundation
 
 class EditReservationInterfaceController: WKInterfaceController {
 
+    var reservation: Reservation?
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
+        guard let reservation = context as? Reservation else { return }
+        self.reservation = reservation
     }
-
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-    }
-
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+        guard let reservation = self.reservation  else { return nil }
+        
+        return (segueIdentifier, reservation)
     }
 
 }

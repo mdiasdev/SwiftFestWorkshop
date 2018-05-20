@@ -39,7 +39,7 @@
                                 <label width="134" alignment="left" text="Label" textAlignment="center" id="lIu-q1-WPz"/>
                             </items>
                         </group>
-                        <group width="1" height="62" alignment="left" id="xko-dr-nOj"/>
+                        <group width="1" height="53" alignment="left" id="xko-dr-nOj"/>
                         <button width="1" alignment="left" title="Edit Reservation" id="Uox-R4-5Nm">
                             <connections>
                                 <segue destination="Ixt-YE-rHc" kind="modal" id="eQs-Wq-nZq"/>
@@ -55,16 +55,56 @@
             </objects>
             <point key="canvasLocation" x="112" y="130"/>
         </scene>
-        <!--Edit Reservation Interface Controller-->
+        <!--Edit Reservation-->
         <scene sceneID="sUV-W2-DHR">
             <objects>
-                <controller id="Ixt-YE-rHc" customClass="EditReservationInterfaceController" customModule="SwiftFestWatch_Extension">
+                <controller title="Edit Reservation" id="Ixt-YE-rHc" customClass="EditReservationInterfaceController" customModule="SwiftFestWatch_Extension">
                     <items>
-                        <label alignment="left" text="Edit" id="6IT-KJ-0aT"/>
+                        <group width="1" height="19" alignment="left" id="u9p-Zr-sEV"/>
+                        <button width="1" alignment="left" title="Party Size" id="8Q8-b4-YWV">
+                            <connections>
+                                <segue destination="pYS-SK-h3H" kind="modal" identifier="party" id="nBB-Cj-DNX"/>
+                            </connections>
+                        </button>
+                        <group width="1" height="11" alignment="left" id="xyS-5c-SJJ"/>
+                        <button width="1" alignment="left" title="Time" id="bQp-iq-IBv">
+                            <connections>
+                                <segue destination="pYS-SK-h3H" kind="modal" identifier="time" id="Cdc-Kv-KIC"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
             <point key="canvasLocation" x="112" y="506"/>
         </scene>
+        <!--Stepper Interface Controller-->
+        <scene sceneID="3g0-fx-aPj">
+            <objects>
+                <controller id="pYS-SK-h3H" customClass="StepperInterfaceController" customModule="SwiftFestWatch_Extension">
+                    <items>
+                        <button width="39" height="39" alignment="center" backgroundImage="plus" id="9rh-Km-nSe">
+                            <connections>
+                                <action selector="plusTapped" destination="pYS-SK-h3H" id="LqB-Mc-8nT"/>
+                            </connections>
+                        </button>
+                        <group width="1" height="13" alignment="left" id="3ZK-zg-T1K"/>
+                        <label width="136" alignment="left" text="Label" textAlignment="center" id="Jzm-mk-2gI"/>
+                        <group width="1" height="13" alignment="left" id="bMb-yu-U0W"/>
+                        <button width="39" height="39" alignment="center" backgroundImage="minus" id="ob2-fJ-er3">
+                            <connections>
+                                <action selector="minusTapped" destination="pYS-SK-h3H" id="J8l-ZP-N3P"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="valueLabel" destination="Jzm-mk-2gI" id="fYK-7K-SAE"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="407" y="504"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nBB-Cj-DNX"/>
+    </inferredMetricsTieBreakers>
 </document>
