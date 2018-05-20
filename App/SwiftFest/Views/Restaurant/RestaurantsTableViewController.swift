@@ -45,7 +45,7 @@ class RestaurantsTableViewController: UITableViewController {
     }
 
     @objc private func fetchRestaurants() {
-        var request = URLRequest(url: URL(string: "http://localhost:8080/restaurants")!)
+        var request = URLRequest(url: URL(string: "http://\(baseURL):8080/restaurants")!)
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data,

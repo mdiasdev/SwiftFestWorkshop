@@ -8,6 +8,12 @@
 
 import UIKit
 
+#if arch(i386) || arch(x86_64)
+let baseURL = "localhost"
+#else
+let baseURL = ""
+#endif
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

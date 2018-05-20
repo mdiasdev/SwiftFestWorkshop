@@ -74,7 +74,7 @@ class ReservationDetailsViewController: UIViewController {
     }
     
     private func cancelReservation() {
-        var request = URLRequest(url: URL(string: "http://localhost:8080/reservation/\(reservation!.id)")!)
+        var request = URLRequest(url: URL(string: "http://\(baseURL):8080/reservation/\(reservation!.id)")!)
         request.httpMethod = "DELETE"
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

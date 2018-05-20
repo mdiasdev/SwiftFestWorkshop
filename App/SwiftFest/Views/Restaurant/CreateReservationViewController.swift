@@ -37,7 +37,7 @@ class CreateReservationViewController: UIViewController {
         partySizeTextField.resignFirstResponder()
         togglePicker()
 
-        var request = URLRequest(url: URL(string: "http://localhost:8080/reservation")!)
+        var request = URLRequest(url: URL(string: "http://\(baseURL):8080/reservation")!)
         request.httpMethod = "POST"
         request.httpBody = getPayload()
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
