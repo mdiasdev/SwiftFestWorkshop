@@ -255,15 +255,51 @@ func deleteReservation(request: HTTPRequest, response: HTTPResponse) {
 
         if reservation.id != 0 {
             try reservation.delete()
+            response.completed(status: .accepted)
         } else {
             response.setBody(string: "Reservation Not Found").completed(status: .notFound)
             return
         }
     } catch let error {
         print(error)
+        response.completed(status: .badGateway)
+    }
+}
+
+func updateReservation(request: HTTPRequest, response: HTTPResponse) {
+    guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
+        response.completed(status: .badRequest)
+        return
     }
 
-    response.completed(status: .accepted)
+    do {
+        guard let json = try request.postBodyString?.jsonDecode() as? [String: Any]  else {
+            response.setBody(string: "Missing or Bad Parameter")
+                .completed(status: .badRequest)
+            return
+        }
+
+        let reservation = Reservation()
+        try reservation.get(id)
+
+        guard reservation.id != 0 else { response.setBody(string: "Reservation does not exist").completed(status: .notFound); return }
+
+        if let newPartySize = json["partySize"] as? Int {
+            reservation.partySize = newPartySize
+        }
+
+        if let newDate = json["date"] as? String {
+            reservation.date = newDate
+        }
+
+        try reservation.save()
+        try response.setBody(json: reservation.asDictionary())
+            .completed(status: .ok)
+
+    } catch {
+        print(error)
+        response.completed(status: .badGateway)
+    }
 }
 
 
@@ -275,6 +311,7 @@ routes.add(method: .post, uri: "/reservation", handler: createReservation)
 routes.add(method: .get, uri: "/reservation/{id}", handler: getReservation)
 routes.add(method: .get, uri: "/reservation", handler: getReservations)
 routes.add(method: .delete, uri: "/reservation/{id}", handler: deleteReservation)
+routes.add(method: .put, uri: "/reservation/{id}", handler: updateReservation)
 
 server.addRoutes(routes)
 

@@ -23,7 +23,7 @@ class Reservation: PostgresStORM {
         self.id = this.data["id"] as? Int ?? 0
         self.restaurantId = restaurantId
         self.date = this.data["date"] as? String ?? ""
-        self.partySize = this.data["partySize"] as? Int ?? 0
+        self.partySize = this.data["partysize"] as? Int ?? 0
 
     }
 
