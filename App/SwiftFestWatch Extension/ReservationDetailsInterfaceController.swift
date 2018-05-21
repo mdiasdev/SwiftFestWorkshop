@@ -34,7 +34,7 @@ class ReservationDetailsInterfaceController: WKInterfaceController {
         if let reservation = reservation {
             restaurantNameLabel.setText(reservation.restaurant.name)
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyy, HH:mm"
+            dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm"
             let reservationDate = dateFormatter.date(from: reservation.date)!
             let components = Calendar.current.dateComponents([.hour, .minute], from: reservationDate)
             reservationTimeLabel.setText("at: \(components.hour!):\(components.minute!)")

@@ -23,7 +23,7 @@ class CreateReservationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        dateFormatter.dateFormat = "MM/dd/yyy, HH:mm"
+        dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm"
     }
 
     func togglePicker() {

@@ -8,6 +8,12 @@
 
 import WatchKit
 
+#if arch(i386) || arch(x86_64)
+let baseURL = "localhost"
+#else
+let baseURL = ""
+#endif
+
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
