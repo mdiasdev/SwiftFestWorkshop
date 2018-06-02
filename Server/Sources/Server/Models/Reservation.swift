@@ -1,9 +1,3 @@
-//
-//  Reservation.swift
-//  Server
-//
-//  Created by Matthew Dias on 10/24/17.
-//
 
 import StORM
 import PostgresStORM

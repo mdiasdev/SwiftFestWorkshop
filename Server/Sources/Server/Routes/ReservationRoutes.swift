@@ -1,9 +1,3 @@
-//
-//  ReservationRoutes.swift
-//  Server
-//
-//  Created by Matthew Dias on 6/2/18.
-//
 
 import PerfectHTTP
 import StORM
@@ -22,11 +16,6 @@ struct ReservationRoutes {
         return routes
     }
 
-    /// Creates a Restaurant in the Database
-    ///
-    /// - Parameters:
-    ///   - request: HTTP Request made by the consumer
-    ///   - response: The created Reservation
     static func createReservation(request: HTTPRequest, response: HTTPResponse) {
         do {
             guard let json = try request.postBodyString?.jsonDecode() as? [String: Any],
@@ -64,12 +53,6 @@ struct ReservationRoutes {
         }
     }
 
-
-    /// Get a single Reservation by ID
-    ///
-    /// - Parameters:
-    ///   - request: HTTP Request made by the consumer
-    ///   - response: The Reservation
     static func getReservation(request: HTTPRequest, response: HTTPResponse) {
         guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
             response.completed(status: .badRequest)
@@ -96,12 +79,6 @@ struct ReservationRoutes {
         response.completed(status: .internalServerError)
     }
 
-
-    /// Get all Reservations
-    ///
-    /// - Parameters:
-    ///   - request: HTTP Request made by the consumer
-    ///   - response: The Reservations
     static func getReservations(request: HTTPRequest, response: HTTPResponse) {
         do {
             let objectQuery = Reservation()
@@ -123,12 +100,6 @@ struct ReservationRoutes {
         }
     }
 
-
-    /// Delete a given Reservation from the database
-    ///
-    /// - Parameters:
-    ///   - request: HTTP Request made by the consumer
-    ///   - response: HTTP Response success or failure
     static func deleteReservation(request: HTTPRequest, response: HTTPResponse) {
         guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
             response.completed(status: .badRequest)

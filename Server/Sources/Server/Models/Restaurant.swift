@@ -1,9 +1,3 @@
-//
-//  Restaurant.swift
-//  Server
-//
-//  Created by Matt Dias on 10/24/17.
-//
 
 import StORM
 import PostgresStORM

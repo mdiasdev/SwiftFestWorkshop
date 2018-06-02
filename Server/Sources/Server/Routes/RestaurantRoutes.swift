@@ -1,9 +1,3 @@
-//
-//  RestaurantRoutes.swift
-//  Server
-//
-//  Created by Matthew Dias on 6/2/18.
-//
 
 import PerfectHTTP
 import StORM
@@ -19,11 +13,6 @@ struct RestaurantRoutes {
         return routes
     }
 
-    /// Returns a list of all restaurants in the database
-    ///
-    /// - Parameters:
-    ///   - request: HTTP Request made by the consumer
-    ///   - response: HTTP Response made of the Restaurants in the Database
     static func getAll(request: HTTPRequest, response: HTTPResponse) {
         do {
             let objectQuery = Restaurant()
@@ -45,12 +34,6 @@ struct RestaurantRoutes {
         }
     }
 
-
-    /// Creates one or many Restaurant objects in the database if all parameters are present
-    ///
-    /// - Parameters:
-    ///   - request: HTTP Request made by the consumer
-    ///   - response: The created Restaurant
     static func create(request: HTTPRequest, response: HTTPResponse) {
         do {
             guard let requestJson = try request.postBodyString?.jsonDecode() as? [[String: Any]] else {
@@ -91,12 +74,6 @@ struct RestaurantRoutes {
         }
     }
 
-
-    /// Delete a given Restaurant from the database
-    ///
-    /// - Parameters:
-    ///   - request: HTTP Request made by the consumer
-    ///   - response: HTTP Response success or failure
     static func delete(request: HTTPRequest, response: HTTPResponse) {
         guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
             response.completed(status: .badRequest)
@@ -121,4 +98,3 @@ struct RestaurantRoutes {
         response.completed(status: .accepted)
     }
 }
-
