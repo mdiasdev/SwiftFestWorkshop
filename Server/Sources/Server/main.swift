@@ -21,14 +21,6 @@ try? reservation.setup()
 let server = HTTPServer()
 server.serverPort = 8080
 
-// Define custom log file
-RequestLogFile.location = "./server.log"
-
-// Instantiate a logger
-let myLogger = RequestLogger()
-server.setRequestFilters([(myLogger, .high)])
-server.setResponseFilters([(myLogger, .low)])
-
 var routes = Routes()
 
 
