@@ -24,13 +24,13 @@ struct RestaurantRoutes {
             }
 
             try response.setBody(json: responseJson)
-                .completed(status: .ok)
+                        .completed(status: .ok)
         } catch let error as StORMError {
             response.setBody(string: error.string())
-                .completed(status: .internalServerError)
+                    .completed(status: .internalServerError)
         } catch let error {
             response.setBody(string: "\(error)")
-                .completed(status: .internalServerError)
+                    .completed(status: .internalServerError)
         }
     }
 
@@ -39,7 +39,7 @@ struct RestaurantRoutes {
             guard let requestJson = try request.postBodyString?.jsonDecode() as? [[String: Any]] else {
 
                 response.setBody(string: "Missing or Bad Parameter")
-                    .completed(status: .badRequest)
+                        .completed(status: .badRequest)
                 return
             }
 

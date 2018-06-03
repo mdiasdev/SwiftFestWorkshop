@@ -24,7 +24,7 @@ struct ReservationRoutes {
                 let partySize = json["partySize"] as? Int else {
 
                     response.setBody(string: "Missing or Bad Parameter")
-                        .completed(status: .badRequest)
+                            .completed(status: .badRequest)
                     return
             }
 
@@ -46,7 +46,7 @@ struct ReservationRoutes {
             }
 
             try response.setBody(json: reservation.asDictionary())
-                .completed(status: .ok)
+                        .completed(status: .ok)
 
         } catch let error {
             print(error)
@@ -66,10 +66,10 @@ struct ReservationRoutes {
 
             if reservation.id != 0 {
                 try response.setBody(json: reservation.asDictionary())
-                    .completed(status: .ok)
+                            .completed(status: .ok)
             } else {
                 response.setBody(string: "Reservation Not Found")
-                    .completed(status: .notFound)
+                        .completed(status: .notFound)
                 return
             }
         } catch let error {
@@ -90,13 +90,13 @@ struct ReservationRoutes {
             }
 
             try response.setBody(json: responseJson)
-                .completed(status: .ok)
+                        .completed(status: .ok)
         } catch let error as StORMError {
             response.setBody(string: error.string())
-                .completed(status: .internalServerError)
+                    .completed(status: .internalServerError)
         } catch let error {
             response.setBody(string: "\(error)")
-                .completed(status: .internalServerError)
+                    .completed(status: .internalServerError)
         }
     }
 
@@ -133,7 +133,7 @@ struct ReservationRoutes {
         do {
             guard let json = try request.postBodyString?.jsonDecode() as? [String: Any]  else {
                 response.setBody(string: "Missing or Bad Parameter")
-                    .completed(status: .badRequest)
+                        .completed(status: .badRequest)
                 return
             }
 
@@ -152,7 +152,7 @@ struct ReservationRoutes {
 
             try reservation.save()
             try response.setBody(json: reservation.asDictionary())
-                .completed(status: .ok)
+                        .completed(status: .ok)
 
         } catch {
             print(error)
