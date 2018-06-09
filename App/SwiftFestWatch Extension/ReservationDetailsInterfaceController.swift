@@ -27,9 +27,4 @@ class ReservationDetailsInterfaceController: WKInterfaceController {
         super.willActivate()
 
     }
-    
-    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
-        guard let reservation = reservation else { return nil }
-        return reservation
-    }
 }

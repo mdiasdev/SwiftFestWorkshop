@@ -558,8 +558,32 @@ map.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: restau
                                  span: MKCoordinateSpan(latitudeDelta: 20, longitudeDelta: 20)))
 ```                                 
 
+Now, to make this watch app more useful than just a way to view `Reservation` data:
+```
+```
 
+`EditReservationInterfaceController` will be a modal. So we'll need to segue from `ReservationDetailsInterfaceController`:
+```
+override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+    guard let reservation = reservation else { return nil }
+    return reservation
+}
+```
 
+Because `EditReservationInterfaceController` is just two buttons, all we have to do is make sure that it has a `Reservation`:
+```
+guard let reservation = context as? Reservation else { return }
+self.reservation = reservation
+```
+
+We need that `Reservation` so we can send it as we segue to our `StepperInterfaceController`:
+```
+override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+    guard let reservation = self.reservation  else { return nil }
+
+    return (segueIdentifier, reservation)
+}
+```
 
 
 We need to make one last endpoint so our users can update their `Reservation`:
