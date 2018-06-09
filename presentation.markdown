@@ -260,18 +260,137 @@ let reservation = Reservation()
 try? reservation.setup()
 ```
 
+Now that we have the object setup, we need to make the endpoint that will create a Reservation for our users:
+```
+static func createReservation(request: HTTPRequest, response: HTTPResponse) {
+    do {
 
+    } catch let error {
+        print(error)
+    }
+}
+```
 
+Just as before, any time we receive data, we want to make sure it's as expected:
+```
+guard let json = try request.postBodyString?.jsonDecode() as? [String: Any],
+    let restaurantId = json["restaurantId"] as? Int,
+    let date = json["date"] as? String,
+    let partySize = json["partySize"] as? Int else {
 
+    response.setBody(string: "Missing or Bad Parameter")
+            .completed(status: .badRequest)
+    return
+}
+```
 
+As important as checking the JSON, we also want to make sure we have the Restaurant in our database:
+```
+let restaurant = Restaurant()
+try restaurant.get(restaurantId)
 
+guard restaurant.id != 0 else {
+    response.setBody(string: "Restaurant Not Found").completed(status: .notFound)
+    return
+}
+```
 
+We'll construct our Reservation object from the data passed in:
+```
+let reservation = Reservation()
+reservation.restaurantId = restaurant.id
+reservation.date = date
+reservation.partySize = partySize
+```
 
+Save it to the database:
+```
+try reservation.save { id in
+    reservation.id = id as! Int
+}
+```
 
-These are some comments between the snippets,
-which Snippetty ignores.
+And return it the successfully created Reservation in our server's response:
+```
+try response.setBody(json: reservation.asDictionary())
+            .completed(status: .ok)
+```
 
-Add routes:
+Again, because we'll have many routes, we'll create a function that returns all routes for this handler:
+```
+static func allRoutes() -> Routes {
+    var routes = Routes()
+
+    return routes
+}
+```
+
+And we'll add the Create Reservation endpoint we just coded:
+```
+routes.add(method: .post, uri: "/reservation", handler: createReservation)
+```
+
+We'll need to again add the routes to our server:
 ```
 routes.add(ReservationRoutes.allRoutes())
 ```
+
+Now, if we've done everything right, we should be able to create a Reservation using Postman. But why don't we try it in the app:
+```
+```
+
+Let's go ahead and create an endpoint that allows a user to cancel their Reservation:
+```
+static func deleteReservation(request: HTTPRequest, response: HTTPResponse) {
+
+}
+```
+
+Before anything, we want to make sure that the user has passed us the ID of the Reservation they want to cancel:
+```
+guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
+    response.completed(status: .badRequest)
+    return
+}
+```
+
+We'll create a reference to our data object for StORM to query against -- returning an error if that fails:
+```
+let reservation = Reservation()
+
+do {
+    try reservation.get(id)
+
+} catch let error {
+    print(error)
+    response.completed(status: .badGateway)
+}
+```
+
+And if the Reservation is present in our database, we should be able to delete it. Or respond with an error if it's not:
+```
+if reservation.id != 0 {
+    try reservation.delete()
+    response.completed(status: .accepted)
+} else {
+    response.setBody(string: "Reservation Not Found").completed(status: .notFound)
+    return
+}
+```
+
+With that all coded up, we just need to add the route to our allRoutes function:
+```
+routes.add(method: .delete, uri: "/reservation/{id}", handler: deleteReservation)
+```
+
+
+static func allRoutes() -> Routes {
+    var routes = Routes()
+
+    routes.add(method: .get, uri: "/reservation/{id}", handler: getReservation)
+    routes.add(method: .get, uri: "/reservation", handler: getReservations)
+
+    routes.add(method: .put, uri: "/reservation/{id}", handler: updateReservation)
+
+    return routes
+}
