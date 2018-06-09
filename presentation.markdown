@@ -389,8 +389,72 @@ routes.add(method: .delete, uri: "/reservation/{id}", handler: deleteReservation
 /************************/
 
 
+Now we need a way to pass `Reservation` data from our to our Watch Extension.:
+```
+```
 
+To do that, we'll create `WatchManager` and make it conform to `WCSessionDelegate`:
+```
+extension WatchManager: WCSessionDelegate {
 
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("App: activationDidCompleteWith")
+    }
+
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("App: sessionDidBecomeInactive")
+    }
+
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("App: sessionDidDeactivate")
+    }
+}
+```
+
+To make sure we can send it to the watch, we'll have to check if the user has a watch:
+```
+func isSupported() -> Bool {
+    if WCSession.isSupported() {
+        WCSession.default.delegate = self
+        WCSession.default.activate()
+        return true
+    }
+
+    return false
+}
+```
+
+And to make sure we're not unnecessarily checking, we'll add a check to see if we've already activated the session:
+```
+guard WCSession.default.activationState != .activated else { return true }
+```
+
+The last thing we want the `WatchManager` to do is send data to the watch:
+```
+func send(json: [String: Any]) {
+    if WCSession.default.activationState == .activated && WCSession.default.isReachable {
+        WCSession.default.sendMessage(json, replyHandler: nil)
+    }
+}
+```
+
+Next we'll want to make sure we send the `Reservation` to the watch when it's created:
+```
+```
+
+To do this, we'll add some code to the `save` function in `CreateReservationViewController`:
+```
+if WatchManager.main.isSupported() {
+    WatchManager.main.send(json: reservation)
+}
+```
+
+And we'll want to add a similar block of code in the `cancelReservation` function in `ReservationDetailsViewController`:
+```
+if WatchManager.main.isSupported() {
+    WatchManager.main.send(json: [:])
+}
+```
 
 
 
