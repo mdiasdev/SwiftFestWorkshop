@@ -193,15 +193,80 @@ Again we'll add the route. And if everything went right, we should be able to ge
 routes.add(method: .get, uri: "/restaurants", handler: getAll)
 ```
 
+We should also be able to see the list of Restaurants populating in our app now:
+```
+```
 
+Next in the UI is to create a Reservation. To do so, we'll follow pretty much the same steps as we did with Restaurants:
+```
+var id: Int = 0
+var restaurantId: Int = 0
+var _restaurant: Restaurant = Restaurant()
+var date: String = ""
+var partySize: Int = 0
+```
 
+We'll need another table. This time for Reservations:
+```
+override open func table() -> String { return "reservations" }
+```
 
+We'll create our "to" function, again allowing us to convert a table row to our object:
+```
+override func to(_ this: StORMRow) {
+    guard let restaurantId = this.data["restaurantid"] as? Int else { return }
+
+    self.id = this.data["id"] as? Int ?? 0
+    self.restaurantId = restaurantId
+    self.date = this.data["date"] as? String ?? ""
+    self.partySize = this.data["partysize"] as? Int ?? 0
+}
+```
+
+We'll also make the rows function in case we need to get all Reservations:
+```
+func rows() -> [Reservation] {
+    var rows = [Reservation]()
+    for i in 0..<self.results.rows.count {
+        let row = Reservation()
+        row.to(self.results.rows[i])
+        rows.append(row)
+    }
+
+    return rows
+}
+```
+
+And we'll make a function that returns a Reservation as a dictionary for use in JSON:
+```
+func asDictionary() -> [String: Any] {
+    let restaurant = Restaurant()
+    try? restaurant.get(self.restaurantId)
+
+    guard restaurant.id > 0 else { return [:] }
+
+    return [
+        "id": self.id,
+        "restaurant": restaurant.asDictionary(),
+        "date": self.date,
+        "partySize": self.partySize,
+    ]
+}
+```
 
 Like with Restaurant we'll want to make sure Reservation gets setup on server launch:
 ```
 let reservation = Reservation()
 try? reservation.setup()
 ```
+
+
+
+
+
+
+
+
 
 These are some comments between the snippets,
 which Snippetty ignores.
