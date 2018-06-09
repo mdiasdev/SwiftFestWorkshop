@@ -456,9 +456,59 @@ if WatchManager.main.isSupported() {
 }
 ```
 
+Now we're ready to consume the data sent to the watch in `ReservationDetailsInterfaceController`'s `awake` function:
+```
+WCSession.default.delegate = self
+WCSession.default.activate()
+```
 
+And we'll need to conform to `WCSessionDelegate`:
+```
+extension ReservationDetailsInterfaceController: WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("activationDidCompleteWith")
+    }
 
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print(message)
+    }
+}
+```
 
+This time, instead of just printing stuff, we're going to store the message to `UserDefaults`
+```
+UserDefaults.standard.set(message, forKey: "reservation")
+```
+
+Now that the data being sent is saved, we'll want a way to retrieve it:
+```
+func retrieveReservation() {
+    self.reservation = nil
+
+    guard let message = UserDefaults.standard.object(forKey: "reservation") as? [String: Any],
+          let data = try? JSONSerialization.data(withJSONObject: message, options: .prettyPrinted),
+          let reservation = try? JSONDecoder().decode(Reservation.self, from: data) else { return }
+
+    self.reservation = reservation
+}
+```
+
+Finally, when the view `willActive` we want to add the data to our UI:
+```
+retrieveReservation()
+
+if let reservation = reservation {
+    restaurantNameLabel.setText(reservation.restaurant.name)
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm"
+
+    let reservationDate = dateFormatter.date(from: reservation.date)!
+    let components = Calendar.current.dateComponents([.hour, .minute], from: reservationDate)
+
+    reservationTimeLabel.setText("at: \(components.hour!):\(components.minute!)")
+}
+```
 
 
 
