@@ -510,6 +510,54 @@ if let reservation = reservation {
 }
 ```
 
+Because the main UI is setup to be paged, `MapInterfaceController` will also need to be a `WCSessionDelegate`:
+```
+extension MapInterfaceController: WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("activationDidCompleteWith")
+    }
+
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print(message)
+
+        UserDefaults.standard.set(message, forKey: "reservation")
+    }
+}
+```
+
+It will also need to be able to retrieve the data from `UserDefaults`:
+```
+func retrieveRestaurant() {
+    self.restaurant = nil
+
+    guard let message = UserDefaults.standard.object(forKey: "reservation") as? [String: Any],
+        let data = try? JSONSerialization.data(withJSONObject: message, options: .prettyPrinted),
+        let reservation = try? JSONDecoder().decode(Reservation.self, from: data) else { return }
+
+    self.restaurant = reservation.restaurant
+}
+```
+
+And when it `awake`s we'll again want to set up the session:
+```
+WCSession.default.delegate = self
+WCSession.default.activate()
+```
+
+Then we'll want to retrieve the data and setup the UI when `MapInterfaceController` `willActive`:
+```
+retrieveRestaurant()
+
+guard let restaurant = restaurant else { return }
+
+map.addAnnotation(CLLocationCoordinate2D(latitude: restaurant.latitude,
+                                         longitude: restaurant.longitude),
+                  with: .green)
+map.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: restaurant.latitude,
+                                                                longitude: restaurant.longitude),
+                                 span: MKCoordinateSpan(latitudeDelta: 20, longitudeDelta: 20)))
+```                                 
+
 
 
 
