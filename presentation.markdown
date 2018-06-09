@@ -7,7 +7,7 @@ func getHello(request: HTTPRequest, response: HTTPResponse) {
 }
 ```
 
-Add desired properties to Restaurant model:
+Add desired properties to `Restaurant` model:
 ```
 var id: Int = 0
 var name: String = ""
@@ -17,7 +17,7 @@ var longitude: Float = 0.0
 var website: String = ""
 ```
 
-Tell StORM the name of our table:
+Tell `StORM` the name of our table:
 ```
 override open func table() -> String { return "restaurants" }
 ```
@@ -51,7 +51,7 @@ func rows() -> [Restaurant] {
 }
 ```
 
-Finally, we're going to add a function that lets us represent our object as a dictionary for use in JSON:
+Finally, we're going to add a function that lets us represent our object as a `Dictionary` for use in JSON:
 ```
 func asDictionary() -> [String: Any] {
     return [
@@ -71,7 +71,7 @@ let restaurant = Restaurant()
 try? restaurant.setup()
 ```
 
-Next we're going to build an endpoint to create Restaurants:
+Next we're going to build an endpoint to create `Restaurants`:
 ```
 static func create(request: HTTPRequest, response: HTTPResponse) {
     do {
@@ -83,7 +83,7 @@ static func create(request: HTTPRequest, response: HTTPResponse) {
 }
 ```
 
-To save time, we're going to create multiple Restaurants at once:
+To save time, we're going to create multiple `Restaurants` at once:
 ```
 guard let requestJson = try request.postBodyString?.jsonDecode() as? [[String: Any]] else {
     response.setBody(string: "Missing or Bad Parameter")
@@ -93,7 +93,7 @@ guard let requestJson = try request.postBodyString?.jsonDecode() as? [[String: A
 }
 ```
 
-Next, we want to loop through the POST body to pull out the JSON representing our Restaurants:
+Next, we want to loop through the POST body to pull out the JSON representing our `Restaurants`:
 ```
 for json in requestJson {
 
@@ -114,7 +114,7 @@ guard let name = json["name"] as? String,
 }
 ```
 
-We'll construct a Restaurant object from the values we pulled out of the JSON:
+We'll construct a `Restaurant` object from the values we pulled out of the JSON:
 ```
 let restaurant = Restaurant()
 restaurant.name = name
@@ -167,7 +167,7 @@ static func getAll(request: HTTPRequest, response: HTTPResponse) {
 }
 ```
 
-We'll create a reference to the object we're looking for and ask StORM to find all of them:
+We'll create a reference to the object we're looking for and ask `StORM` to find all of them:
 ```
 let objectQuery = Restaurant()
 try objectQuery.findAll()
@@ -182,7 +182,7 @@ for row in objectQuery.rows() {
 }
 ```
 
-Finally, we'll ask Perfect to return a response containing all of our Restaurants:
+Finally, we'll ask `Perfect` to return a response containing all of our `Restaurants`:
 ```
 try response.setBody(json: responseJson)
             .completed(status: .ok)
@@ -193,11 +193,11 @@ Again we'll add the route. And if everything went right, we should be able to ge
 routes.add(method: .get, uri: "/restaurants", handler: getAll)
 ```
 
-We should also be able to see the list of Restaurants populating in our app now:
+We should also be able to see the list of `Restaurants` populating in our app now:
 ```
 ```
 
-Next in the UI is to create a Reservation. To do so, we'll follow pretty much the same steps as we did with Restaurants:
+Next in the UI is to create a `Reservation`. To do so, we'll follow pretty much the same steps as we did with `Restaurants`:
 ```
 var id: Int = 0
 var restaurantId: Int = 0
@@ -206,12 +206,12 @@ var date: String = ""
 var partySize: Int = 0
 ```
 
-We'll need another table. This time for Reservations:
+We'll need another table. This time for `Reservations`:
 ```
 override open func table() -> String { return "reservations" }
 ```
 
-We'll create our "to" function, again allowing us to convert a table row to our object:
+We'll create our `to` function, again allowing us to convert a table row to our object:
 ```
 override func to(_ this: StORMRow) {
     guard let restaurantId = this.data["restaurantid"] as? Int else { return }
@@ -223,7 +223,7 @@ override func to(_ this: StORMRow) {
 }
 ```
 
-We'll also make the rows function in case we need to get all Reservations:
+We'll also make the rows function in case we need to get all `Reservations`:
 ```
 func rows() -> [Reservation] {
     var rows = [Reservation]()
@@ -237,7 +237,7 @@ func rows() -> [Reservation] {
 }
 ```
 
-And we'll make a function that returns a Reservation as a dictionary for use in JSON:
+And we'll make a function that returns a `Reservation` as a `Dictionary` for use in JSON:
 ```
 func asDictionary() -> [String: Any] {
     let restaurant = Restaurant()
@@ -254,13 +254,13 @@ func asDictionary() -> [String: Any] {
 }
 ```
 
-Like with Restaurant we'll want to make sure Reservation gets setup on server launch:
+Like with `Restaurant` we'll want to make sure Reservation gets setup on server launch:
 ```
 let reservation = Reservation()
 try? reservation.setup()
 ```
 
-Now that we have the object setup, we need to make the endpoint that will create a Reservation for our users:
+Now that we have the object setup, we need to make the endpoint that will create a `Reservation` for our users:
 ```
 static func createReservation(request: HTTPRequest, response: HTTPResponse) {
     do {
@@ -284,7 +284,7 @@ guard let json = try request.postBodyString?.jsonDecode() as? [String: Any],
 }
 ```
 
-As important as checking the JSON, we also want to make sure we have the Restaurant in our database:
+As important as checking the JSON, we also want to make sure we have the `Restaurant` in our database:
 ```
 let restaurant = Restaurant()
 try restaurant.get(restaurantId)
@@ -295,7 +295,7 @@ guard restaurant.id != 0 else {
 }
 ```
 
-We'll construct our Reservation object from the data passed in:
+We'll construct our `Reservation` object from the data passed in:
 ```
 let reservation = Reservation()
 reservation.restaurantId = restaurant.id
@@ -310,7 +310,7 @@ try reservation.save { id in
 }
 ```
 
-And return it the successfully created Reservation in our server's response:
+And return it the successfully created `Reservation` in our server's response:
 ```
 try response.setBody(json: reservation.asDictionary())
             .completed(status: .ok)
@@ -325,7 +325,7 @@ static func allRoutes() -> Routes {
 }
 ```
 
-And we'll add the Create Reservation endpoint we just coded:
+And we'll add the `createReservation` endpoint we just coded:
 ```
 routes.add(method: .post, uri: "/reservation", handler: createReservation)
 ```
@@ -335,18 +335,18 @@ We'll need to again add the routes to our server:
 routes.add(ReservationRoutes.allRoutes())
 ```
 
-Now, if we've done everything right, we should be able to create a Reservation using Postman. But why don't we try it in the app:
+Now, if we've done everything right, we should be able to create a `Reservation` using Postman. But why don't we try it in the app:
 ```
 ```
 
-Let's go ahead and create an endpoint that allows a user to cancel their Reservation:
+Let's go ahead and create an endpoint that allows a user to cancel their `Reservation`:
 ```
 static func deleteReservation(request: HTTPRequest, response: HTTPResponse) {
 
 }
 ```
 
-Before anything, we want to make sure that the user has passed us the ID of the Reservation they want to cancel:
+Before anything, we want to make sure that the user has passed us the ID of the `Reservation` they want to cancel:
 ```
 guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
     response.completed(status: .badRequest)
@@ -354,7 +354,7 @@ guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
 }
 ```
 
-We'll create a reference to our data object for StORM to query against -- returning an error if that fails:
+We'll create a reference to our data object for `StORM` to query against -- returning an error if that fails:
 ```
 let reservation = Reservation()
 
@@ -378,7 +378,7 @@ if reservation.id != 0 {
 }
 ```
 
-With that all coded up, we just need to add the route to our allRoutes function:
+With that all coded up, we just need to add the route to our `allRoutes` function:
 ```
 routes.add(method: .delete, uri: "/reservation/{id}", handler: deleteReservation)
 ```
@@ -399,14 +399,15 @@ routes.add(method: .delete, uri: "/reservation/{id}", handler: deleteReservation
 
 
 
-We need to make one last endpoint so our users can update their Reservation:
+
+We need to make one last endpoint so our users can update their `Reservation`:
 ```
 static func updateReservation(request: HTTPRequest, response: HTTPResponse) {
 
 }
 ```
 
-First we'll need to make sure that we're being passed a Reservation ID from the caller:
+First we'll need to make sure that we're being passed a `Reservation.id` from the caller:
 ```
 guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
     response.completed(status: .badRequest)
@@ -428,7 +429,7 @@ do {
 }
 ```
 
-Then we'll make a reference to our object, ask StORM to retrieve the specific Reservation, and check to see if it's real:
+Then we'll make a reference to our object, ask `StORM` to retrieve the specific `Reservation`, and check to see if it's real:
 ```
 let reservation = Reservation()
 try reservation.get(id)
@@ -450,14 +451,14 @@ if let newDate = json["date"] as? String {
 }
 ```
 
-We'll save our updated reservation in place and return it to our users:
+We'll save our updated `Reservation` in place and return it to our users:
 ```
 try reservation.save()
 try response.setBody(json: reservation.asDictionary())
             .completed(status: .ok)
 ```
 
-All that's left it to make sure we add our new route to allRoutes:
+All that's left it to make sure we add our new route to `allRoutes`:
 ```
 routes.add(method: .put, uri: "/reservation/{id}", handler: updateReservation)
 ```  
