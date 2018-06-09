@@ -384,13 +384,80 @@ routes.add(method: .delete, uri: "/reservation/{id}", handler: deleteReservation
 ```
 
 
-static func allRoutes() -> Routes {
-    var routes = Routes()
+/***********************/
+      Watch Stuff
+/************************/
 
-    routes.add(method: .get, uri: "/reservation/{id}", handler: getReservation)
-    routes.add(method: .get, uri: "/reservation", handler: getReservations)
 
-    routes.add(method: .put, uri: "/reservation/{id}", handler: updateReservation)
 
-    return routes
+
+
+
+
+
+
+
+
+
+We need to make one last endpoint so our users can update their Reservation:
+```
+static func updateReservation(request: HTTPRequest, response: HTTPResponse) {
+
 }
+```
+
+First we'll need to make sure that we're being passed a Reservation ID from the caller:
+```
+guard let id = Int(request.urlVariables["id"] ?? "0"), id > 0 else {
+    response.completed(status: .badRequest)
+    return
+}
+```
+
+Next we're going to want to make sure we've been sent some JSON that holds the properties we need to update:
+```
+do {
+    guard let json = try request.postBodyString?.jsonDecode() as? [String: Any]  else {
+        response.setBody(string: "Missing or Bad Parameter")
+                .completed(status: .badRequest)
+        return
+    }
+} catch {
+    print(error)
+    response.completed(status: .badGateway)
+}
+```
+
+Then we'll make a reference to our object, ask StORM to retrieve the specific Reservation, and check to see if it's real:
+```
+let reservation = Reservation()
+try reservation.get(id)
+
+guard reservation.id != 0 else {
+    response.setBody(string: "Reservation does not exist").completed(status: .notFound)
+    return
+}
+```
+
+Now that we've retrieved the correct object, we can modify it with the properties passed in:
+```
+if let newPartySize = json["partySize"] as? Int {
+    reservation.partySize = newPartySize
+}
+
+if let newDate = json["date"] as? String {
+    reservation.date = newDate
+}
+```
+
+We'll save our updated reservation in place and return it to our users:
+```
+try reservation.save()
+try response.setBody(json: reservation.asDictionary())
+            .completed(status: .ok)
+```
+
+All that's left it to make sure we add our new route to allRoutes:
+```
+routes.add(method: .put, uri: "/reservation/{id}", handler: updateReservation)
+```  
