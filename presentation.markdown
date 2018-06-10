@@ -585,6 +585,33 @@ override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
 }
 ```
 
+Inside of `StepperInterfaceController`'s `awake` function we again want to make sure our context is right:
+```
+guard let editContext = context as? EditObject else { return }
+```
+
+Now that we have the correct context, we want to pull out the two parts of it:
+```
+usage = editContext.usage
+reservation = editContext.reservation
+
+guard reservation != nil else { return }
+```
+
+And we'll set up the UI with the correct data for usage:
+```
+if usage == "party" {
+    valueLabel.setText("\(reservation!.partySize)")
+} else if usage == "time" {
+
+    dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm"
+    let reservationDate = dateFormatter.date(from: reservation!.date)!
+    let components = Calendar.current.dateComponents([.hour, .minute], from: reservationDate)
+    let time = String(format: "%02i:%02i", components.hour!, components.minute!)
+
+    valueLabel.setText(time)
+}
+```
 
 We need to make one last endpoint so our users can update their `Reservation`:
 ```
@@ -648,3 +675,63 @@ All that's left it to make sure we add our new route to `allRoutes`:
 ```
 routes.add(method: .put, uri: "/reservation/{id}", handler: updateReservation)
 ```  
+
+Now that we have an endpoint to hit, we can call it as the user leaves the screen:
+```
+override func didDeactivate() {
+    super.didDeactivate()
+
+}
+```
+
+We'll build our `request`:
+```
+var request = URLRequest(url: URL(string: "http://\(baseURL):8080/reservation/\(reservation!.id)")!)
+request.httpMethod = "PUT"
+```
+
+Then we'll create the payload and add it to the `request`:
+```
+let payload: [String: Any] = ["partySize": reservation!.partySize,
+                              "date": reservation!.date]
+request.httpBody = try! JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
+```
+
+Next we'll create a data task and start it:
+```
+let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+}
+task.resume()
+```
+
+Finally, we'll check that the update worked and save the `response` in case the user makes more edits:
+```
+guard error == nil, data != nil else { print(error.debugDescription); return}
+guard let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? [String: Any] else { return }
+
+UserDefaults.standard.set(json, forKey: "reservation")
+```
+
+If we don't want our users only swiping, we can let them use the digital crown by conforming to `WKCrownDelegate`:
+```
+extension StepperInterfaceController: WKCrownDelegate {
+    func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
+        if rotationalDelta > 0 {
+            plusTapped()
+        } else {
+            minusTapped()
+        }
+    }
+}
+```
+
+To use this, we'll need to set `StepperInterfaceController` as the delegate when `awake`:
+```
+crownSequencer.delegate = self
+```
+
+And give the `crownSequencer` focus when `StepperInterfaceController` `willActivate`:
+```
+crownSequencer.focus()
+```
