@@ -22,8 +22,6 @@ class RestaurantsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationController?.navigationBar.prefersLargeTitles = true
-        
         self.refreshControl?.addTarget(self, action: #selector(fetchRestaurants), for: .valueChanged)
 
         fetchRestaurants()
