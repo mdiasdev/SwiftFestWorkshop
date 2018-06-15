@@ -73,6 +73,7 @@ class RestaurantsTableViewController: UITableViewController {
            let restaurant = restaurants?[row] {
 
             detailVC.restaurant = restaurant
+            detailVC.title = restaurant.name
         }
     }
 

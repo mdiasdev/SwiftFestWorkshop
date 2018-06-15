@@ -26,6 +26,12 @@ class CreateReservationViewController: UIViewController {
         dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm"
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        partySizeTextField.becomeFirstResponder()
+    }
+    
     func togglePicker() {
         self.datePicker.isHidden = !datePicker.isHidden
 
