@@ -1,44 +1,47 @@
+#!/bin/bash
+
 echo "Starting Workshop Setup"
 echo
 echo "*****************************"
 
-command -v brew >/dev/null 2>&1 || {
-  echo >&2 "Installing Homebrew Now"; \
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
-}
-echo "Homebrew installed"
-
-
-echo
-echo "*****************************"
-if brew ls --versions libxml2 > /dev/null; then
-  echo "libxml2 already installed"
+which -s brew
+if [[ $? != 0 ]] ; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
-  # The package is not installed
-  echo "installing libxml2"
-  command brew install libxml2
+  echo "Homebrew is already installed, checking for updates"
+  brew update
 fi
 
+echo
+echo "*****************************"
+
+which -s libxml2
+if [[ $? != 0 ]] ; then
+  echo "Installing libxml2"
+  brew install libxml2
+else
+  echo "libxml2 is already installed, checking for updates"
+  brew upgrade libxml2
+fi
 
 echo
 echo "*****************************"
-if brew ls --versions postgres > /dev/null; then
-  echo "Postgres already installed"
-else
-  # The package is not installed
+which -s postgres
+if [[ $? != 0 ]] ; then
   echo "Installing postgres"
-  command brew install postgres
+  brew install postgres
+else
+  echo "postgres is already installed, checking for updates"
+  brew upgrade postgres
 fi
-
 
 echo
 echo "*****************************"
 echo "Starting Postgres"
-command brew services start postgresql
-
+brew services start postgresql
 
 echo
 echo "*****************************"
 echo "Generating SwiftFestServer"
 command cd Server
-command swift package generate-xcodeproj
+swift package generate-xcodeproj
