@@ -14,6 +14,8 @@ If you do not want to have these packages installed on your computer, or you don
 ## Project Structure
 This repository has 2 branches, **workshop** and **master**. The workshop branch will be used during the workshop in order to build the code in master. The master branch is the completed project. If you wish to code along, please either **clone or download the workshop** branch.
 
+Inside this repo, you should have App and Server directories. The App directory contains everything used for creating the iOS and watchOS apps. The Server directory includes the code for the server, but **requires you run the setup below** to generate the Xcode project file.
+
 ## Getting Started
 Once you've either downloaded or cloned this repo, you'll need to navigate to the code in a terminal:
 ```
