@@ -46,8 +46,8 @@ struct RestaurantRoutes {
             for json in requestJson {
                 guard let name = json["name"] as? String,
                     let phoneNumber = json["phoneNumber"] as? String,
-                    let latitude = json["latitude"] as? Float,
-                    let longitude = json["longitude"] as? Float,
+                    let latitude = json["latitude"] as? Double,
+                    let longitude = json["longitude"] as? Double,
                     let website = json["website"] as? String else {
 
                         response.setBody(string: "Missing or Bad Parameter")

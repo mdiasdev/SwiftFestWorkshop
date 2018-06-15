@@ -20,14 +20,13 @@ class RestaurantDetailViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var phoneButton: UIButton!
-
+    
     var restaurant: Restaurant?
     var locationManager = CLLocationManager()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         mapView.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
