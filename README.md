@@ -7,12 +7,12 @@ which we'll use to feed data to a watchOS app.
 If you'd like to code a long with this workshop, you'll want to make sure that
 your Mac has **High Sierra** installed on it and that you're also running **Xcode 9.4.***
 
-You will also need to install a couple of dependencies (**Homebrew, PostgreSQL, and libxml2**). Instructions for installing the dependencies can be found in [Getting Started](#getting-started)
+You will also need to install a couple of dependencies (**Homebrew, PostgreSQL, and libxml2**). Instructions for installing the dependencies can be found in [Getting Started](#getting-started).
 
 If you do not want to have these packages installed on your computer, or you don't want to upgrade your Mac, you're still more than welcome to the workshop. However, you will not be able to code along, because the above dependencies are required to run the server.
 
 ## Project Structure
-This repository has 2 branches, **workshop** and **master**. The workshop branch will be used during the workshop in order to build the code in master. The master branch is the completed project. If you wish to code along, please either **clone or download the workshop** branch
+This repository has 2 branches, **workshop** and **master**. The workshop branch will be used during the workshop in order to build the code in master. The master branch is the completed project. If you wish to code along, please either **clone or download the workshop** branch.
 
 ## Getting Started
 Once you've either downloaded or cloned this repo, you'll need to navigate to the code in a terminal:
@@ -25,4 +25,4 @@ In that directory, you should find a file, `setup.sh`. If you execute this scrip
 ```
 If everything was installed correctly, you should see `SwiftFestServer.xcodeproj` in the **Server** directory and be able to build/run.
 
-If you see errors during the setup script, and the project doesn't build, you can follow the setup steps individually. The individual steps can be found in [the server's readme](Server/README.md)
+If you see errors during the setup script, and the project doesn't build, you can follow the setup steps individually. The individual steps can be found in [the server's readme](Server/README.md).
