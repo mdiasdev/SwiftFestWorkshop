@@ -1,7 +1,6 @@
 import PerfectLib
 import PerfectHTTP
 import PerfectHTTPServer
-import PerfectRequestLogger
 
 import StORM
 import PostgresStORM
