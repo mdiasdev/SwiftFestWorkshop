@@ -21,7 +21,9 @@ class RestaurantsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        navigationController?.navigationBar.prefersLargeTitles = true
+        
         self.refreshControl?.addTarget(self, action: #selector(fetchRestaurants), for: .valueChanged)
 
         fetchRestaurants()
@@ -73,6 +75,7 @@ class RestaurantsTableViewController: UITableViewController {
            let restaurant = restaurants?[row] {
 
             detailVC.restaurant = restaurant
+            detailVC.title = restaurant.name
         }
     }
 
