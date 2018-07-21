@@ -23,6 +23,7 @@ server.serverPort = 8080
 var routes = Routes()
 routes.add(RestaurantRoutes.allRoutes())
 routes.add(ReservationRoutes.allRoutes())
+routes.add(AuthRoutes.allRoutes())
 
 server.addRoutes(routes)
 
