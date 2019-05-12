@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FRY-9D-WRj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FRY-9D-WRj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -175,9 +174,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </mapView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgW-SL-iJU">
-                                <rect key="frame" x="0.0" y="427.5" width="375" height="190"/>
+                                <rect key="frame" x="0.0" y="428.5" width="375" height="189.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IFy-i5-Pi9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="26" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdV-fG-JI7">
@@ -195,6 +194,9 @@
                                                     <state key="normal" title="Website">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="websiteTapped:" destination="KvI-dO-skX" eventType="touchUpInside" id="yiR-HT-kTf"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAr-HE-jNJ">
                                                     <rect key="frame" x="0.0" y="45.5" width="115" height="33"/>
@@ -202,6 +204,9 @@
                                                     <state key="normal" title="Phone Number">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="phoneTapped:" destination="KvI-dO-skX" eventType="touchUpInside" id="tgB-9z-b9V"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -262,6 +267,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Hys-5g-rzk">
+                        <barButtonItem key="rightBarButtonItem" image="favoritable" id="DVv-As-xbX">
+                            <connections>
+                                <action selector="didTapHeart:" destination="KvI-dO-skX" id="mYf-YH-Rcc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="pjp-ne-5iG" id="dPW-hF-18s"/>
                         <outlet property="mapView" destination="dI9-gl-jLk" id="9cq-yQ-tjk"/>
@@ -299,7 +311,7 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hal-tj-9kj">
-                                            <rect key="frame" x="18.5" y="209" width="337.5" height="249"/>
+                                            <rect key="frame" x="19" y="209" width="337.5" height="249"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Party Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-zj-Vpu">
                                                     <rect key="frame" x="16" y="48" width="80.5" height="20.5"/>
@@ -346,7 +358,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <datePicker hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="1r0-ey-Aza">
-                                                            <rect key="frame" x="0.0" y="-298" width="305.5" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="305.5" height="0.0"/>
                                                             <date key="date" timeIntervalSinceReferenceDate="545513661.97812796">
                                                                 <!--2018-04-15 19:34:21 +0000-->
                                                             </date>
@@ -587,9 +599,7 @@
         <image name="Reservations" width="24" height="24"/>
         <image name="Restaurants" width="24" height="24"/>
         <image name="cancel" width="24" height="24"/>
-        <namedColor name="Swift Orange">
-            <color red="0.97299998998641968" green="0.53700000047683716" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="favoritable" width="24" height="24"/>
         <namedColor name="Swift Orange">
             <color red="0.97299998998641968" green="0.53700000047683716" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -24,6 +24,9 @@ class RestaurantDetailViewController: UIViewController {
     var restaurant: Restaurant?
     var locationManager = CLLocationManager()
 
+    // This should come from the server, but for demo purposes,
+    // we just mark it as a favorite locally
+    private var isFavorite = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +92,26 @@ class RestaurantDetailViewController: UIViewController {
             }
         }
     }
-
+  
+    @IBAction func websiteTapped(_ sender: Any) {
+        let url = URL(string: restaurant!.website)!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func phoneTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Phone Ringing", message: "For this demo, we didn't want to call the restaurants...", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapHeart(_ sender: UIBarButtonItem) {
+        isFavorite.toggle()
+        if isFavorite {
+            sender.image = #imageLiteral(resourceName: "favorited")
+        } else {
+            sender.image = #imageLiteral(resourceName: "favoritable")
+        }
+    }
 }
 
 extension RestaurantDetailViewController: CreateReservationDelegate {
