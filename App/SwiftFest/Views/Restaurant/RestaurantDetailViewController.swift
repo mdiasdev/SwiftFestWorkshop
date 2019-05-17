@@ -20,6 +20,7 @@ class RestaurantDetailViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var phoneButton: UIButton!
+    @IBOutlet var favoriteButton: UIBarButtonItem!
     
     var restaurant: Restaurant?
     var locationManager = CLLocationManager()
@@ -30,6 +31,11 @@ class RestaurantDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        favoriteButton.accessibilityLabel = "favorite"
+        mapView.accessibilityElementsHidden = true
+
+
         mapView.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
@@ -108,8 +114,12 @@ class RestaurantDetailViewController: UIViewController {
         isFavorite.toggle()
         if isFavorite {
             sender.image = #imageLiteral(resourceName: "favorited")
+            favoriteButton.accessibilityLabel = "favorited"
+            favoriteButton.accessibilityHint = "double tap to unfavorite"
         } else {
             sender.image = #imageLiteral(resourceName: "favoritable")
+            favoriteButton.accessibilityLabel = "favorite"
+            favoriteButton.accessibilityHint = ""
         }
     }
 }
